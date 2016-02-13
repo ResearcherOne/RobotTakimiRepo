@@ -1,2 +1,1 @@
-# KolektifBot
-Modüler Robotik Platform
+#Modüler Robotik Platform

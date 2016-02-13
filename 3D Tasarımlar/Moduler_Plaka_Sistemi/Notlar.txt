@@ -1,0 +1,2 @@
+*Kullanýlacak Civata ve Somun Türü: M4, 10mm uzunluðunda.
+*Parça basýmýný yaparken bütün boyutlarý 1.3 ile çarpýn.

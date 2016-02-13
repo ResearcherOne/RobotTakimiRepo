@@ -1,0 +1,10 @@
+//Not: Farklý yýldýzlar ayný haftanýn farklý günlerini ifade ediyor.
+Hafta 1: (20.02.2016 Gün Sonuna Kadar)
+	*Raspberry Pi'a opencv kurdum. Haar training sayesinde þu anda raspberry pi prizleri tanýyabiliyor. 
+Hafta 2: (20.02.2016 Gün Sonuna Kadar)
+	*Alýcý verici modülünü hakkýnda araþtýrma yaptým.
+	*Alýcý verici modülünü arduino ile çalýþtýrmayý denedim ama iletiþimde bir sýkýntý çýktý.
+	*Alýcý verici modülünü arduino ile çalýþtýrmayý baþardým.
+Hafta 3: (20.02.2016 Gün Sonuna Kadar)
+	*Modüler plaka'yý oluþturacak parçayý tasarladým ve ilk basýmýný yaptým.
+	*90 derece parçasýný tasarlayýp bastým.
