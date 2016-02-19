@@ -2,3 +2,4 @@ Hafta 1: (20.02.2016 Gun Sonuna Kadar)
 	*Github repoyu actim ve gerekli dosyalari duzenleyip ilk commit'i yaptim. Websitesi uzerinde calismaya basladim, sonraki calismamda
 		websitesi'ni hazirlamaya devam edecegim.
 	*Serial iletiþim protokolü üzerinde düþündüm ve modüler yapýda nodemcu için kod yazmaya baþladým.
+	*(10 Pomodoro) Serial to MQTT için modüler yapýda kod yazdým.
