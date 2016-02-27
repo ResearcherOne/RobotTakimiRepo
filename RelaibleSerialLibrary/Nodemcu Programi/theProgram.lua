@@ -4,34 +4,44 @@ local configModule = require "configModule"
 local mqttModule = require "mqttModule"
 
 local MQTT = nil
-local deviceState = 0 --Device is not connected to AP:0, Device is not connected to MQTT:1, Device is ready:2
+local deviceState = 0 --Device is not connected to AP:0, Device is not connected to MQTT but connected to AP:1, Device is ready, connected to MQTT:2
 
-function theProgram.init()
-	uart.setup(0,9600,8,0,1); --What does echo do? (last argument)
-	uart.on("data", "\n", function(data) uartProcessData(data) end, 0) --I guess last option is about "whether i should try to run the code as LUA or not?"
-	configureWifi()
-	mqttModule.initialize()
-	print("System is initialized.")
+
+function configureWifi()
+	wifi.setmode(wifi.STATION)
+	wifi.sta.config(configModule.Wifi.ssid,configModule.Wifi.password)
+end
+
+function isIpAvailable()
+	if (wifi.sta.getip() ~= nil) then
+		return true
+	else
+		return false
 	end
-
-function theProgram.loop()
-	updateDeviceState()
-	mqttModule.updateStatus()
 end
 
 function updateDeviceState()
-	if (isIpAvailable == 0) then
+	if (isIpAvailable() ~= true) then
 		deviceState = 0
-	elseif (isIpAvailable == 1) then
-		deviceState = 1
-	elseif (deviceState == 1) then
-		if (mqttModule.connectionStatus == 0) then
-			mqttModule.connect()
+		configureWifi()
+	else
+		if (deviceState == 0) then
+			deviceState = 1
 		else
-			deviceState = 2
+			if (mqttModule.connectionStatus == 0) then
+				deviceState = 1
+				if (mqttModule.isConnectFunctionCalled) then
+					mqttModule.close()
+					mqttModule.connect()
+				else
+					mqttModule.connect()
+				end
+			else
+				deviceState = 2
+				mqttModule.updateStatus()
+			end
 		end
 	end
-	print("DeviceState:%d",deviceState)
 end
 
 function uartProcessData(data)
@@ -44,17 +54,17 @@ function uartProcessData(data)
 	end
 end
 
-function isIpAvailable()
-	if (wifi.sta.getip() ~= nil) then
-		return 1
-	else
-		return 0
+function theProgram.init()
+	uart.setup(0,9600,8,0,1); --What does echo do? (last argument)
+	uart.on("data", "\n", function(data) uartProcessData(data) end, 0) --I guess last option is about "whether i should try to run the code as LUA or not?"
+	configureWifi()
+	mqttModule.initialize()
+	print("System is initialized.")
 	end
-end
 
-function configureWifi()
-	wifi.setmode(wifi.STATION)
-	wifi.sta.config(configModule.Wifi.ssid,configModule.Wifi.password)
+function theProgram.loop()
+	updateDeviceState()
+	print("Device State:",deviceState)
 end
 
 return theProgram
@@ -62,7 +72,7 @@ return theProgram
 --TODO, figure out the way tmr.alarm works and what does their ID refers to.
 --State 0 iken tekrar bağlanmaya çalışmalı. Autoconnection olayını açmalıyım.
 --[[Notlar:
-*Fonksiyonun çağrıldığı fonksiyondan aşağıda olması bir şeyi etkilemiyor.
+*Bir fonksiyon çağrıldığı fonksiyondan AŞAĞIDA OLAMAZ. LUA interpreter, daha önce çağrılmak istenen fonksiyonla karşılaşmadığı için nil value'yi çağırmaya çalışır.
 *Fonksiyon modülü return etmeden önce tanımlanmalı yoksa hata veriyor.
 *modulIsmı.fonksiyonIsmi seklinde bir fonksiyonu belirtmedikçe, fonksiyon local de kalıyor.
 ! Nodemcu modullerinin ismine dikkat et. Overwrite etme. Örnek: mqtt = nil deyip mqtt modülünü overwrite etmek.
