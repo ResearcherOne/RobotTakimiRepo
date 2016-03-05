@@ -2,7 +2,7 @@ local configModule = {}
 
 configModule.MQTT = {}
 configModule.MQTT.clientID = "moduleAlpha"
-configModule.MQTT.username = "debugDevice"
+configModule.MQTT.username = "debugDevice" --Cloud MQTT te bu kullanici adli uyeye okuma izni vermeyi unutma.
 configModule.MQTT.password = "12345"
 configModule.MQTT.server = "m10.cloudmqtt.com"
 configModule.MQTT.tlsPort = 38429

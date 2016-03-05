@@ -70,6 +70,8 @@ end
 return theProgram
 
 --TODO, figure out the way tmr.alarm works and what does their ID refers to.
+--TODO, mqtt already connected error, SOLVE IT
+
 --State 0 iken tekrar bağlanmaya çalışmalı. Autoconnection olayını açmalıyım.
 --[[Notlar:
 *Bir fonksiyon çağrıldığı fonksiyondan AŞAĞIDA OLAMAZ. LUA interpreter, daha önce çağrılmak istenen fonksiyonla karşılaşmadığı için nil value'yi çağırmaya çalışır.
@@ -96,3 +98,5 @@ if (validPackage){
 ValidPackage: "Header:headerContent\nMessage:messageContent\n"
 
 ]]--
+
+--
