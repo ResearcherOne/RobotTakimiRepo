@@ -1,0 +1,4 @@
+Gereken her þey burada var, joystick baðlantý noktalarýna dikkat et yanlýþ uçlara baðlama:
+http://42bots.com/tutorials/arduino-joystick-module-example/
+
+(Önemsiz)Ben ayrýca A0 ve A1'in kodda yerini deðiþtirdim kablolarý daha sonra deðiþtirmemek için

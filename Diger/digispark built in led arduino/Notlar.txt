@@ -1,0 +1,5 @@
+Gereken Arduino program ayarlarý ve built in led için kodlar burada:
+https://digistump.com/wiki/digispark/tutorials/connecting
+
+ayrýca fotoðrafta olan iki digispark da Model A, yani built in led pin=1
+Model B için built in led pin=0
