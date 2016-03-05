@@ -1,4 +1,0 @@
-13.02.2016
-	*3D Tasarým dosyalarý github'a taþýndý.
-27.02.2016
-	*Karahan Karakurt olusturdu: basic_block_with_hole_v0.2
