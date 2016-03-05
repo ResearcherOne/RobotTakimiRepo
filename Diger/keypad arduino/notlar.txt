@@ -1,0 +1,7 @@
+Önce bunu buldum, kodu aldým, dijital ekranda display için bu kullanýlýyormuþ, ama benzer method:
+http://playground.arduino.cc/Main/KeypadTutorial
+keys kýsmýnda dikkat edilmesi gereken keypad'deki tuþlarýn sýrasýyla keys'deki tuþlarýn ayný olmasý.
+sonra Keypad kütüphanesini eklemem gerektiðini fark ettim, þurada fonksiyonlar da var, arduino'da keypad örneðine de bakarak kodu düzenledim:
+http://playground.arduino.cc/Code/Keypad
+
+pinleri 3 sütun, 4 satýr olarak alýyor.
