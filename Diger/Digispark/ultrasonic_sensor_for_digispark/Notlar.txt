@@ -1,0 +1,13 @@
+Digispark için seri port ekraný desteði yok.
+Bu yüzden kullanýlabilecek yollardan biri DigiKeyboard.
+Baþka seçenekler de þurada: https://digistump.com/wiki/digispark/tutorials/debugging
+
+DigiKeyboard örneði arduino örneklerinde var, ama önce digispark ayarlarýný yapmanýz gerekiyor.
+Gereken Arduino program ayarlarý:
+https://digistump.com/wiki/digispark/tutorials/connecting
+
+Arduino'da Dosya/Örnekler/DigisparkKeyboard/Keyboard ile örneðe ulaþýlabilir,
+#include "DigiKeyboard.h" yapmayý unutmayýn en baþta.
+DigiKeyboard.sendKeyStroke(0) kullanýmý bir sonraki print edilecek yazýnýn ilk harfini göndermede hata olmamasý için var.
+Digispark'ýn alaný çok küçük olduðu için long gibi value type kullanýmý hafýzasýný dolduruyor, bu yüzden int kullanýlmasý en azýndan birkaç kez loop olmasýný saðlýyor.
+Ultrasonik sensör için de zaten 3 kez en fazla yapýyor bu dosyadaki koda göre.
