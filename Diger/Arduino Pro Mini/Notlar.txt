@@ -1,0 +1,13 @@
+Arduino Pro Mini MEGA328P 5V 16Mhz
+builtin led 13'te
+
+baðlantý þekli
+Pro Mini ------ USB-TTL
+GND		GND
+VCC		5V(3V3 de olur, arduino ide'den 3v3'ü seçmek gerek sadece, hatasý 10 sn. yanacak led 4-5 sn yanar)
+RXD		TXD
+TXD		RXD
+(normalde txd-txd ve rxd-rxd ama yüklemede sorun olduðu için ters)
+
+3.3V mu 5V mu anlamak için test basit blink kodu yüklemek, led yanma süresini ölçmek
+Programlama yapýlýrken kod derlenirken pro mini'deki reset butonuna basýlý tut, derleme bittiðinde ve boyutu göründüðünde býrak, yüklenir.
