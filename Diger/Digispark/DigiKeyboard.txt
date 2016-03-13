@@ -1,0 +1,4 @@
+ultrasonik sensor gibi print edilmesini istediðimiz veri olan araç
+ ve programlarda, DigiKeyboard kullanýrken "DigiKeyboard.update()"
+ eklenmeli USB iletiþimini sürdürebilmek için, þurada da bahsediyor:
+https://digistump.com/wiki/digispark/tutorials/digikeyboard
