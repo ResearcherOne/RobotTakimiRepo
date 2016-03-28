@@ -1,0 +1,6 @@
+Date: 19.09.2015
+
+LOG#1
+I shared my wireless network internet, i got a warning which was something like that "OK, but your local area connection ip will be 192.168.137.1 is it OK for you?"
+I accepted then i change the ip of raspberry pi in cmdline.txt to be 192.168.137.5.
+SUCCESS.
