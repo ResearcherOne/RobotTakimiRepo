@@ -1,0 +1,94 @@
+﻿LOG#1 - 20.03.2016
+	SD karta rasbaian yukleyecektim fakat ogrendim ki raspberry pi 2'de ubuntu 14.04 isletim sistemi destegi varmis.
+		Ubuntu daha yaygin bir sekilde kullanildigi icin rasbian yerine ubuntu 14.04 kuracagim.
+	
+	Rufus programini kullanarak SD karta Ubuntu 14.04'u yukluyorum.
+	Device'ı SD kart olarak(gorunen adi bu: NO_LABEL(F:) [4GB]) ve ISO dosyasini(ubuntu imaji) secip start'a bastiktan sonra
+		Karsima "ISOHybrid image detected" penceresi cikti. Yazdigina gore iki turlu imaj yazilabiliyormus SD karta ve ISO'yu oneriyormus.
+		"Write in ISO Image mode" secenegini secerek "OK" a basiyorum. Cikan uyariya "OK" diyorum ve yazdirma basliyor.
+		
+	Tamam, gorunuse gore ubuntu yuklemek o kadar da kolay degilmis. Ubuntu'nun normal ISO dosyasi degil ozel bir versiyonunu indirmek gerekiyormus.
+		Bu olaya daha sonra tekrar bakacagim ama gorunuse gore rasbian'dan devam edecekmisiz gibi duruyor.
+
+LOG#2 - 21.03.2016
+	Simdi SD karti rasbian wheezy surumu ile flashlayacagim. Flashlama proseduru daha once ubuntuyu kurdugum gibi. Rufus uzerinden hallediliyor.
+	Flashlayip rasberry pi 3'u actiktan sonra karsima renkli bir ekran cikti. Internetten okuduguma gore bu debug ekrani imis ve anladigim kadariyla
+	imaj ya da flashlama ile ilgili bir problemden oturu raspberry pi boot etmiyor.
+
+LOG#3 - 22.03.2016
+	Ubuntu ARM yuklemeyi deneyecegim.
+	
+LOG#4 - 23.03.2016
+	Raspbian Jessie Lite yukledim. Grafik arayuzlu versiyonu 4GB SD karta sigmadi bundan dolayida dedigim gibi LITE versiyonu yukledim.
+	Ekrana bagladigimda SSH uzerinden eristigim gibi karsimda terminal vardi. Ki LITE versiyon anlasilan bu sekilde.
+	
+	Simdi amacim daha sonra ekrana ihtiyac durmamak icin ethernet uzerinden SSH ile baglanti olayini hallettmek.
+	Once raspberry pi'i ekrana taktim.
+	Sonra login olmami istediginde bu bilgileri kullandim:
+		username: pi
+		password: raspberry 
+	Ardindan raspberry pi'a ve bilgisayarima ethernet kablosunu taktim.
+	Baglanti adi "Unidentified Network" yani tanimlanamayan ag olarak gorunuyor.
+	Baglanti kurulduktan sonra raspberry pi'in sifresini ogrenmek icin raspberry pi'a klavye takip
+		ifconfig
+	komutunu konsola girdim ve 
+		et0
+		login
+		wlan0
+	basliklari altinda bilgileri gosterdi.
+	Buradan "eth0" basligi altinda bulunan "inet addr:" nin 192.168.137.15 oldugunu gordum.
+	ONEMLI NOT: Bilgisayarim LAN uzerinden olan baglantilarda sabit ip alma secenegi isaretli ve ip olarak "192.168.137.1" i alıyor.
+	
+	Uzun lafin kisasi su anda SSH uzerinden basarili bir sekilde baglanti yaptim.
+	Sonraki calismamda raspberry pi'a ROS kuracagim.
+	
+Sonraki Adimlar:
+	*ROS kur
+		http://wiki.ros.org/ROSberryPi/Installing%20ROS%20Indigo%20on%20Raspberry%20Pi
+		
+	*ROS hello world ve basit bir uygulama.
+	*Raspbian icin Mosquitto MQTT Sunucusu
+	*Raspberry Pi'i Wifi AP yapmak.
+LOG#5 - 31.03.2016
+	Görünüşe gore prize fişi takma kismini yapabilmek için ROS'u kurmaya gerek yok. NodeJs'te yazabileceğimiz MQTT'ye baglanabilen
+	ve imageRecognition yapan bir programla işi halledebiliriz. Diğer yandan zaten NodeJs'i bir ROS yazilim modulu gibi kullanabileceğimiz
+	kutuphaneler mevcut yani NodeJs kullanmak herhangi bir problem yaratmayacak gerekli ayarlamalari yaptiktan sonra.
+	Şimdi, ROS ile Emir Unlu Turk ilgilenecek ben ise robot kolu yapabilmek için NodeJs ile uygulamayi geliştirme üzerine yogunlasacagim diger
+		yandan robot kolun basimi için hafta sonu parça basmayi denemem gerekiyor.
+	
+	-NodeJs yukle
+	-Image recognition NodeJs ile yap
+	-NodeJs MQTT client kullan
+	
+	-Raspberry Pi MQTT Server kur
+
+LOG#6 - 01.04.2016
+	Bugun nodeJs ile image recognition uzerinde calisacagim.
+	Ethernet uzerinden mobaXterm programi ile raspberryPi'a baglanmaya calisirken problem cikti. Muhtemeden farkli bir ip aldi kendine.
+		bir onceki baglanisimda 192.168.137.15 ip adresini almişti.
+	Şimdi içinde bulunan cmdline.txt'e girip belirli bir ip adresi almasi için degisiklik yapacagim.
+	İlginç, zaten cmndline.txt in sonuna ip=192.168.137.15 komutunu eklemişim. Yinede baglanamiyorum.
+	Raspberry Pi'ı ekrana baglayip ne olup bittigini ogrenecegim.
+	Aslinda bir saniye, daha onceden tecrube ettigim kadariyla raspberry pi'in ip adresi 192.168.137.X formatinda
+		oluyor. Yani aslinda 192.168.137 ile başlayan butun ip lere ping atan bir program olsaydi ip adresini bulabilirdi.
+	Huhuu oldu, ip adres 192.168.137.235 imiş... Angry Ip Scanner diye bir program var. Bahsettigim olayi yapiyor. IP range'i veriyorsunuz, ki bu durumda ip range
+		192.168.137.1 ile 192.168.137.255 arasi, ve 5-10 saniye icinde butun ip adreslerine ping atiyor ve cihazi buluyor.
+	OK, simdi node'u kuracagim. pi klasorune (/home/pi) "nodeJs" diye bir klasorun icin
+	Bu linkteki tutorial'i takip ederek nodeJs i yukluyorum
+		https://learn.adafruit.com/node-embedded-development/installing-node-dot-js
+	RaspberryPi bir seyler indiriyorken takiliyor. Sanirim esas bilgisayarimdaki internette bir sorun var.
+	OK, node'u indirmeyi basardim. Diger yandan o arada, raspberry pi i wifi ile internete bagladim (Etherhernet uzerinden hala bagliyim)
+		belki ethernet uzerinden internete baglanmada sorun vardir diye ama sanirim sorun ondan kaynaklanmiyor.
+	Şimdi ethernet uzerinden degilde ayni wi-fi agina baglanip onun uzerinden mobaXterm ile raspberry Pi a baglanacagim.
+	Wi-Fi uzerinden baglanma isi sorun cikardi. Ethernete donus yapiyorum.
+
+LOG#7 - 02.04.2016
+	Simdi node'da goruntu isleme olayini halledecegim.
+	node-opencv'yi yukluyorum. (node modulu)
+		https://github.com/peterbraden/node-opencv
+	node-opencv'yi kurmadan once opencv 2.x kurmam gerekiyormus.
+!: 	Internet problemi, interneti ethernet uzerinden paylastigimdanmis. Raspberry Pi'i ekrana baglayip Wi-Fi ile
+		internete baglayinca sorun cozuldu.
+	opencv 2.x kurmak için şu tutorial'i takip ediyorum:
+		http://robertcastle.com/2014/02/installing-opencv-on-a-raspberry-pi/
+	

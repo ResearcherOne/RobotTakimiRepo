@@ -1,8 +1,9 @@
+#Protocol
 Transfer Object: 	{data:"",dataLength:"",senderDevice:""}
 	minified: 		{d:"",l:"",s:""}
 Response Object: {}
 
-Protocol:
+Protocol Flow:
 	Search for device
 	Establish Connection
 	Send Data
