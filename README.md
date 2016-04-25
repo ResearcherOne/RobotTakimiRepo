@@ -20,10 +20,11 @@
 				Raspberry Pi (MQTT server, WiFi AccessPoint)
 				
 #Project Challanges:
++	-Haar-Traning to recognize wall plugs
 	-Set-Up ROS
-	-Set-Up ROS-Nodejs Integration
-	-Create ROS module for image(plug) recognition
-		alternative(1): craete the module on nodejs 
+		-Set-Up ROS-Nodejs Integration
+		-Create ROS module for image(plug) recognition
+			alternative(1): craete the module on nodejs 
 	-NodeJs MQTT client module
 	-Set-Up MQTT server on Raspberry Pi
 	-Use Raspberry Pi as Access Point (Use nodejs wifi api?)

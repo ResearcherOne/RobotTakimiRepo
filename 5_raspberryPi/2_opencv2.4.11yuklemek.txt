@@ -1,0 +1,10 @@
+#İzlenecek Yol
+	Aşağıdaki linkten "libopencv_2.4.11.deb.zip" dosyasini indir.
+		https://github.com/Nolaan/libopencv_24/releases/tag/OpenCV_2.4.11
+	mobaXterm programi üzerinden bu dosyayi raspberry pi'a at.
+	sudo apt-get install unzip
+	unzip libopencv_2.4.11.deb.zip -d libopencv_2.4.11
+	cd libopencv_2.4.11
+	sudo dpkg -i libopencv_2.4.11.deb
+#Kaynak(İngilizce):
+	https://github.com/Nolaan/libopencv_24/releases
