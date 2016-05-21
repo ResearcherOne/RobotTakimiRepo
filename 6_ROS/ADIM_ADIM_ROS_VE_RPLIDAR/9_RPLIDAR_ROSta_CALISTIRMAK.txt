@@ -1,0 +1,28 @@
+USB cihazlara erisebildigimizden emin olmak icin;
+Bu Komutlari Calistir:
+	groups username
+	
+sonucta cikan uye oldugunuz gruplar arasinda
+	"dialout"
+grubu yoksa kendini bu gruba eklemen gerekiyor. (Grup adlarinin nasil ciktigini 
+	gormek icin "9-2_ornek_gruplar" adli ekran goruntusune bakabilirsin)
+
+---Bu kisim dialout grubuna girmek için---
+Bu Komutlari Calistir:
+	sudo gpasswd --add birkan dialout
+DÝKKAT!!! "birkan" yerine kendi kullanici adini yazmalisin.
+Hemen ardindan bilgisayar oturumunu kapatip tekrar aç
+	ya da basitçe bilgisayari yeniden baþlat.
+Bunlarin ardindan tekrar "groups birkan" komutunu calistirarak
+	(birkan yerine kendi kullanici adini yazmalisin)
+	artik dialout grubunda olup olmadýðýndan emin olabilirsin. 
+---dialout grubuna girmek için yapilmasi gerekenler bitis---
+
+Simdi RPLIDAR'i calistigindan emin oldugun bir USB portuna tak
+	(Yani kisaca rp lidar'i bilgisayara tak.)
+	Buyuk an geldi!!
+Bu Komutlari Calistir:
+	roslaunch rplidar_ros view_rplidar.launch
+
+	Her sey basarili bir sekilde ilerlemisse karsina "9_1_rplidar_rviz_test" adli
+	ekran goruntusundeki gibi bir program acilicak ve TA-DA!

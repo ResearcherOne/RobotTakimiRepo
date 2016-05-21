@@ -1,0 +1,26 @@
+Bu Komutlari Calistir:
+	sudo touch /etc/apt/sources.list.d/ros-latest.list
+	sudo nano /etc/apt/sources.list.d/ros-latest.list
+Hemen Ardindan bunu konsola yapistir:
+	deb http://packages.ros.org/ros/ubuntu trusty main
+Hemen ardindan tuş kombinasyonlarina bas:
+	ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+	y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+Tamam, artik ubuntu gerekli yazilimlari nereden cekecegini biliyor. Fakat bu paketten yuklememiz icin
+	guvenlik anahtarinida indirmemiz lazim.
+Bu komutlari calistir:
+	wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key
+	sudo apt-key add ros.key
+Bu noktada, en son "OK" diye bir yazi cikmali. Bu basarili bir sekilde anahtari ekledin anlamina geliyor. Artik
+	bu anahtara ihtiyacimiz kalmadi. Bunu silmemizde bir sakinca yok:
+Bu komutlari calistir:
+	sudo rm ros.key
+Neredeyse her sey hazir. Once bi yazilimlari indirecegimiz kaynaklari guncelleyelim:
+Bu komutlari calistir:
+	sudo apt-get update
+	sudo apt-get upgrade
+Muhtelen uzunca bir yuklemenin ardindan:
+Bu komutlari calistir:
+	sudo apt-get install ros-indigo-desktop-full
+Bu asagi yukari 1.5gb vardi. Bunu yuklemek biraz zaman alacaktir. Bu arada yaptigimiz HER ADIM önemli. Herhangi bir
+	adimi atlaman muhtemeden hata almana yol açacaktir.

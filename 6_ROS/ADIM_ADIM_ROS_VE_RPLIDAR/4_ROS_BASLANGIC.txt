@@ -1,0 +1,23 @@
+Bu Komutlari Calistir:
+	sudo rosdep init
+Dikkat! Hemen asagidaki komutta "sudo" kullanilmamali.
+	rosdep update
+	source /opt/ros/indigo/setup.bash
+	export | grep ROS
+
+Buraya kadar basarili bir sekilde geldiyseniz en son olarak karsiniza
+	ROS_DISTRO, ROS_PACKAGE_PATH ve benzeri þeyler çýkmali.
+Bende çýkan bir örneði "4-1_ornek_basarili_yukleme" adli fotoðrafta gorebilirsin.
+
+Simdi "source /opt/ros/indigo/setup.bash" komutunu calistirma olayini her terminal acildiginda otomatik olarak
+	gerceklestirilmesi için bazi iþlemler yapacaðiz.
+Bu Komutlari Calistir:
+	sudo nano ~/.bashrc
+	
+Hemen ardindan karþýnýza çýkan yazilarda sayfanin en altina gelin ve en alta bu satiri ekleyin:
+		(Sayfanin nasil gorunmesi gerektiðinine "4-2_ornek_olmasi_gereken_sayfa" adli ekran goruntusunden bakabilirsin.)
+	source /opt/ros/indigo/setup.bash
+Hemen ardindan tuþ kombinasyonlarina bas:
+	ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+	y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+	enter	(enter tuþu islemin tamamlanmasini saglayacak)

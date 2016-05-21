@@ -1,3 +1,9 @@
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install libopencv-dev
+sudo node opencvTest.js
+
+
 #İzlenecek Yol
 	Aşağıdaki linkten "libopencv_2.4.11.deb.zip" dosyasini indir.
 		https://github.com/Nolaan/libopencv_24/releases/tag/OpenCV_2.4.11
@@ -8,3 +14,71 @@
 	sudo dpkg -i libopencv_2.4.11.deb
 #Kaynak(İngilizce):
 	https://github.com/Nolaan/libopencv_24/releases
+	
+pi@raspberrypi:~/nodejs $ sudo npm install opencv --unsafe-perm
+-
+> opencv@5.0.0 install /home/pi/nodejs/node_modules/opencv
+> node-pre-gyp install --fallback-to-build
+
+/home/pi/nodejs/node_modules/opencv/utils/find-opencv.js:21
+                throw new Error("ERROR: failed to run: pkg-config", opencv, flag);
+                ^
+
+Error: ERROR: failed to run: pkg-config
+    at /home/pi/nodejs/node_modules/opencv/utils/find-opencv.js:21:23
+    at ChildProcess.exithandler (child_process.js:210:5)
+    at emitTwo (events.js:87:13)
+    at ChildProcess.emit (events.js:172:7)
+    at maybeClose (internal/child_process.js:817:16)
+    at Socket.<anonymous> (internal/child_process.js:319:11)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at Pipe._onclose (net.js:469:12)
+gyp: Call to 'node utils/find-opencv.js --cflags' returned exit status 1. while trying to load binding.gyp
+gyp ERR! configure error
+gyp ERR! stack Error: `gyp` failed with exit code: 1
+gyp ERR! stack     at ChildProcess.onCpExit (/usr/local/lib/node_modules/npm/node_modules/node-gyp/lib/configure.js:355:16)
+gyp ERR! stack     at emitTwo (events.js:87:13)
+gyp ERR! stack     at ChildProcess.emit (events.js:172:7)
+gyp ERR! stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:200:12)
+gyp ERR! System Linux 4.1.19-v7+
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "configure" "--fallback-to-build" "--module=/home/pi/nodejs/node_modules/opencv/build/opencv/v5.0.0/Release/node-v46-linux-arm/opencv.node" "--module_name=opencv" "--module_path=/home/pi/nodejs/node_modules/opencv/build/opencv/v5.0.0/Release/node-v46-linux-arm"
+gyp ERR! cwd /home/pi/nodejs/node_modules/opencv
+gyp ERR! node -v v4.0.0
+gyp ERR! node-gyp -v v3.0.1
+gyp ERR! not ok
+node-pre-gyp ERR! build error
+node-pre-gyp ERR! stack Error: Failed to execute '/usr/local/bin/node /usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js configure --fallback-to-build --module=/home/pi/nodejs/node_modules/opencv/build/opencv/v5.0.0/Release/node-v46-linux-arm/opencv.node --module_name=opencv --module_path=/home/pi/nodejs/node_modules/opencv/build/opencv/v5.0.0/Release/node-v46-linux-arm' (1)
+node-pre-gyp ERR! stack     at ChildProcess.<anonymous> (/home/pi/nodejs/node_modules/opencv/node_modules/node-pre-gyp/lib/util/compile.js:83:29)
+node-pre-gyp ERR! stack     at emitTwo (events.js:87:13)
+node-pre-gyp ERR! stack     at ChildProcess.emit (events.js:172:7)
+node-pre-gyp ERR! stack     at maybeClose (internal/child_process.js:817:16)
+node-pre-gyp ERR! stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+node-pre-gyp ERR! System Linux 4.1.19-v7+
+node-pre-gyp ERR! command "/usr/local/bin/node" "/home/pi/nodejs/node_modules/opencv/node_modules/.bin/node-pre-gyp" "install" "--fallback-to-build"
+node-pre-gyp ERR! cwd /home/pi/nodejs/node_modules/opencv
+node-pre-gyp ERR! node -v v4.0.0
+node-pre-gyp ERR! node-pre-gyp -v v0.6.17
+node-pre-gyp ERR! not ok
+Failed to execute '/usr/local/bin/node /usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js configure --fallback-to-build --module=/home/pi/nodejs/node_modules/opencv/build/opencv/v5.0.0/Release/node-v46-linux-arm/opencv.node --module_name=opencv --module_path=/home/pi/nodejs/node_modules/opencv/build/opencv/v5.0.0/Release/node-v46-linux-arm' (1)
+npm ERR! Linux 4.1.19-v7+
+npm ERR! argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "opencv" "--unsafe-perm"
+npm ERR! node v4.0.0
+npm ERR! npm  v2.14.2
+npm ERR! code ELIFECYCLE
+
+npm ERR! opencv@5.0.0 install: `node-pre-gyp install --fallback-to-build`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the opencv@5.0.0 install script 'node-pre-gyp install --fallback-to-build'.
+npm ERR! This is most likely a problem with the opencv package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node-pre-gyp install --fallback-to-build
+npm ERR! You can get their info via:
+npm ERR!     npm owner ls opencv
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/pi/nodejs/npm-debug.log
+pi@raspberrypi:~/nodejs $

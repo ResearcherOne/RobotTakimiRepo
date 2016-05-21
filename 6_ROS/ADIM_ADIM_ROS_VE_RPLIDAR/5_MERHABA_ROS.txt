@@ -1,0 +1,10 @@
+yeni bir terminal aç bu komutu çalýþtýr:
+	roscore
+yeni bir terminal aç bu komutu çalýþtýr(Evet yeni bir terminal aç):
+	rosrun turtlesim turtlesim_node
+yeni bir terminal aç bu komutu çalýþtýr(Evet gerçekten üçüncü bir terminal açman gerekiyor.):
+	rosrun turtlesim turtle_teleop_key
+Bu noktada "TurtleSim" adli bir program acilmali. "Use arrow keys to move the turtle." yazan terminale
+	tiklayip yon tuslari ile "TurtleSim" programindaki kaplumbagayi hareket ettirebilirsin. En son nasil
+	bir sey ile karsilasman gerektigini gormek icik "5-1_merhaba_ros" adli ekran goruntusune bakabilirsin.
+	Yeterince eglendikten sonra ilerlemeye devam :)
