@@ -1,0 +1,7 @@
+"5a range of single-phase ac current sensor module for arduino"
+
+AC current sensor'u kullanabilmek için dosyadaki resimde görüldüðü
+þekilde, içinden geçen alternatif akýmýn ölçülmesini istediðimiz telin,
+sensörün ortasýndaki açýklýktan geçirilmesi gerekiyor.
+
+Bu nedenle haritalayýcý robot için kullanýþlý deðil.

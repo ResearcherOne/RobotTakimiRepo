@@ -1,0 +1,13 @@
+gayet basit bir okuma bildirme modülü, deðeri okuyup ne
+olduðunu kolayca veriyor.
+
+Baðlantýlarda gerilimi ölçmek istediðiniz þeyin düþük gerilimli tarafýný
+GND'ye, yüksek gerilimli tarafýný VCC'ye baðlayýn.
+
+S pinini analog input olarak belirlediðiniz yere takýn,
+- pinini Arduino'da ground kýsmýna takýn,
++ hiçbir þey yapmýyor, baðlamayýn.
+
+
+
+http://henrysbench.capnfatz.com/henrys-bench/arduino-voltage-measurements/arduino-25v-voltage-sensor-module-user-manual/
