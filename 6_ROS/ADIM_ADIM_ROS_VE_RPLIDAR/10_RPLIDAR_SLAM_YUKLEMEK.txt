@@ -1,0 +1,17 @@
+her seyi sil. Bastan workspace'i kur
+	cd ~/catkin_ws/src
+	git clone -b slam https://github.com/robopeak/rplidar_ros.git
+	source ~/catkin_ws/devel/setup.bash
+simdi duzgun yuklenmis mi kontrol et
+	roslaunch rplidar_ros view_slam.launch
+Artik hector slam'i yukleme vakti geldi
+	cd ~/catkin_ws/src
+	git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam
+	cd ~/catkin_ws
+	catkin_make
+	catkin_make install
+	source ~/catkin_ws/devel/setup.bash
+	roslaunch rplidar_ros view_slam.launch	
+	
+	
+https://hollyqood.wordpress.com/2015/12/01/ros-slam-2-hector-slam-2d%E5%9C%B0%E5%9C%96%E5%BB%BA%E7%BD%AE/
