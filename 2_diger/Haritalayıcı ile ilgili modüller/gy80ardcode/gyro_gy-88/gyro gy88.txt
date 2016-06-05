@@ -1,0 +1,22 @@
+Kod aþaðýdaki ilk iki linkte de ayný, 3. linkte ise nasýl baðlanacaðý mevcut.
+
+VIN-3V3 (ama gy-88'de sanýrým voltaj regülatörü var, 5V da olur)
+GND-GND
+SCL-A5
+SDA-A4
+
+
+1-http://playground.arduino.cc/Main/MPU-6050
+
+2-https://codebender.cc/sketch:55130#GY-88%20MPU6050.ino
+
+3-https://theccontinuum.com/2012/09/24/arduino-imu-pitch-roll-from-accelerometer/
+
+
+
+Ayrýca:
+The output scale for any setting is [-32768, +32767] for each of the six axes. The default setting in the I2Cdevlib class is +/- 2g for the accel and +/- 250 deg/sec for the gyro. If the device is perfectly level and not moving, then:
+X/Y accel axes should read 0
+Z accel axis should read 1g, which is +16384 at a sensitivity of 2g
+X/Y/Z gyro axes should read 0
+In reality, the accel axes won't read exactly 0 since it is difficult to be perfectly level and there is some noise/error, and the gyros will also not read exactly 0 for the same reason (noise/error).

@@ -1,0 +1,36 @@
+MPU6050 I2C register map
+https://www.olimex.com/Products/Modules/Sensors/MOD-MPU6050/resources/RM-MPU-60xxA_rev_4.pdf
+
+
+BMP085 barometer datasheet
+https://www.sparkfun.com/datasheets/Components/General/BST-BMP085-DS000-05.pdf
+
+
+(Elimizdeki gy-88 için)
+"I2C Scanner
+Scanning...
+I2C device found at address 0x1E  !
+I2C device found at address 0x68  !
+I2C device found at address 0x77  !
+done"
+
+
+Arduino whole code
+http://bbs.wandianlian.com/forum.php?mod=viewthread&tid=94
+
+
+Raspberry pi whole code (haven't tried)
+http://hamsterworks.co.nz/mediawiki/index.php?title=ten_degrees_of_freedom_i2c_sensor&oldid=4023
+
+
+The library can be found here:
+http://www.i2cdevlib.com/usage
+
+
+MPU6050 satýrýndaki ilk üçü Acceleration, diðer üçü Gyro.
+Acceleration için 1g=9.80665=16384 oluyor serial portta.
+Gyro ölçümler 250 degrees/second olmasý lazým.
+HMC5883L magnetometer oluyor, çýkan verileri deneyemedim.
+
+Barometre yükseklik formülü
+https://en.wikipedia.org/wiki/Barometric_formula

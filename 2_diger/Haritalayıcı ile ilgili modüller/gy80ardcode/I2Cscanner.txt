@@ -1,0 +1,1 @@
+Bunu modülün hangi I2C device nerelerde olduðunu öðrenmek için kullan.
