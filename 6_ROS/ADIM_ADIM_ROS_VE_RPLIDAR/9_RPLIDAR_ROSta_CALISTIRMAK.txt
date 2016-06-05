@@ -1,6 +1,6 @@
 USB cihazlara erisebildigimizden emin olmak icin;
-Bu Komutlari Calistir:
-	groups username
+Bu Komutlari Calistir (DÝKKAT!!! "birkan" yerine kendi kullanici adini yazmalisin.):
+	groups birkan
 	
 sonucta cikan uye oldugunuz gruplar arasinda
 	"dialout"

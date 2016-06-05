@@ -1,4 +1,4 @@
-Esas islemleri yapmadan once giyhub'dan kaynak dosyalarini
+Esas islemleri yapmadan once github'dan kaynak dosyalarini
 	cekebilmemiz icin "git" programini yuklememiz gerekiyor.
 Bu Komutlari Calistir:
 	sudo apt-get install git
@@ -9,6 +9,7 @@ Once "catkin_make" icin "workspace" imizi hazirlayalim. Bu program
 	github'tan cekecegimiz dosyalari ROS icin yuklenebilir hale getirecek.
 Bu Komutlari Calistir:
 	source /opt/ros/indigo/setup.bash
+	mkdir ~/catkin_ws
 	mkdir ~/catkin_ws/src
 	cd ~/catkin_ws/src
 	catkin_init_workspace
