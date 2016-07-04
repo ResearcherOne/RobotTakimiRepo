@@ -1,0 +1,36 @@
+Notlar:
+	Raspberry Pi ile baglanti kuracakken, Laptop eger wifi vb. bir aða bagli ise baglantiyi kes.
+Gerekli Seyler:
+	Raspberry Pi için iþletim sistemi yuklenmis SD kart (8GB ideal)
+	Linux iþletim sistemi
+-------------------------------------------
+Þimdi raspberry pi'in açýldýgý zaman "192.168.137.50" IP'sini almasi için þu iþlemleri yapacaðýz:
+	SD karti bilgisayarina tak.
+	cmdline.txt dosyasini aç.
+	cmdline.txt'in içinde yazanlara ek olarak bir boþluk birak ve "ip=192.168.137.50" yaz.
+		cmdline.txt'nin nasil gorunmesi gerektigini gormek icin "03-1_ornek_basarili_yukleme" adli fotoðrafa bakabilirsin. Bu arada
+		eger SD kartta farkli bir isletim sistemi kuruluysa (ben UBUNTU ARM kullaniyorum) cmndline.txt'te yazan seyler farkli olabilir.
+		Diger yandan farkli isletim sistemide olsa onemli olan tek nokta, yukarida bahsedildigi gibi en sona bir bosluk biraktiktan
+		sonra "ip=ISTENEN_IP" nin yazilmasi.
+
+Ethernet kablosunun bir ucunu raspberry Pi'a diger ucunu ise linux bilgisayarina tak.
+
+Þimdi ise, Linux bilgisayarimiz ethernet baglantisi yaptiginda  IP'sini 192.168.137.1 ye sabitlemesi için þu iþlemleri yapacaðýz:
+	Sag ustte bulunan wifi iþaretine tikla. (03-3_wifi_isareti adlý ekran alýntisindan iþaretin nerede oldugunu gorebilirsin)
+	Çýkan seçeneklerden, en altta olan "Edit Connections" a tikla.
+	"03-4_network_connections" ekran alintisinda goruldugu gibi "Wired Connection" a ardindan ise "edit" butonuna bas.
+	"03-5_editing_wired_connection" ekran alintisinda gorulen sira ile ekran alintisinda oldugu gibi gerekli yerleri doldur.
+	
+Raspberry Pi'in guc kablosunu çýkar ve tak.
+
+Artik ssh ile raspberry pi'a baglanti kurma vakti geldi:
+	Raspberry Pi açýldýgýnda, linux bilgisayarindan terminali aç. Nasil açýlacagini gormek için "03-6_terminali_acmak" ekran alinitisini
+	inceleyebilirsin.
+	Açýlan terminale "ssh kullaniciAdi@ipAdresi" formatini kullanarak yazacagin komut ile raspberry pi'a baglanabilirsin.
+		Ben raspberry pi'da ubuntu arm iþletim sistemi kullandigim için kullanici adi "ubuntu" ve hatirlayacagin uzere
+		yukarida raspberry pi'a "192.168.137.50" ip adresini atamiþtik. Yani ben,
+			ssh ubuntu@192.168.137.50
+		yazarak raspberry pi'a baglanabilirim.
+
+Baþarýlý bir þekilde baglanti kurdugumuzda karþýna ne çýkmasi gerektiðini gormek için "03-8_basarili_baglanti" ekran alintisina
+bakabilirsin.

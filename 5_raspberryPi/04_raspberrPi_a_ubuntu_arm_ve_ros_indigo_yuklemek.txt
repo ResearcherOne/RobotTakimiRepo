@@ -1,0 +1,66 @@
+Notlar:
+	Raspberry Pi'a kuracagimiz UBUNTU ARM'da grafiksel arayuz mevcut degil.
+	Raspberry Pi 2 uzerinde denendi.
+	UBUNTU Versiyonu: ubuntu arm 14.04
+	SD karti flashlamak için Windowsta bulunan RUFUS programi kullanildi.
+Gerekli Seyler:
+	Raspberry Pi 2
+	Ekran
+	HDMI kablosu
+	Klavye
+	Windows Bilgisayar
+Bilinmesi Gereken Seyler:
+	Ethernet Kablosu uzerinden raspberry pi 2 ile interneti paylasmak.
+-------------------------------------------
+Using screen and keyboard, powered up raspberry pi 2
+sudo fdisk /dev/mmcblk0
+d
+2
+n
+p
+2
+(enter)
+(enter)
+sudo reboot
+sudo resize2fs /dev/mmcblk0p2
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install dphys-swapfile
+sudo apt-get install openssh-server
+sudo apt-get install linux-firmware
+
+sudo update-locale LANG=C LANGUAGE=C LC_ALL=C LC_MESSAGES=POSIX
+
+Bu Komutlari Calistir:
+	sudo touch /etc/apt/sources.list.d/ros-latest.list
+	sudo nano /etc/apt/sources.list.d/ros-latest.list
+Hemen Ardindan bunu konsola yapistir:
+	deb http://packages.ros.org/ros/ubuntu trusty main
+Hemen ardindan tuþ kombinasyonlarina bas:
+	ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+	y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+Tamam, artik ubuntu gerekli yazilimlari nereden cekecegini biliyor. Fakat bu paketten yuklememiz icin
+	guvenlik anahtarinida indirmemiz lazim.
+Bu komutlari calistir:
+	wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key
+	sudo apt-key add ros.key
+Bu noktada, en son "OK" diye bir yazi cikmali. Bu basarili bir sekilde anahtari ekledin anlamina geliyor. Artik
+	bu anahtara ihtiyacimiz kalmadi. Bunu silmemizde bir sakinca yok:
+Bu komutlari calistir:
+	sudo rm ros.key
+
+sudo apt-get update
+sudo apt-get install ros-indigo-ros-base
+sudo apt-get install build-essential
+sudo apt-get install screen
+
+sudo apt-get install console-common
+
+sudo apt-get install python-rosdep
+sudo rosdep init
+rosdep update
+
+echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+sudo apt-get install python-rosinstall

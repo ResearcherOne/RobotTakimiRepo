@@ -1,0 +1,20 @@
+Sistem Notlarý:
+	Laptop: USB Flash Bellege kurulu, Ubuntu 14.04.4
+		ROS:
+			ros-indigo-desktop-full
+		Açýlan Node'lar:
+			turtlesim_node
+			turtle_teleop_key
+	Raspberry Pi 2: Ubuntu ARM (GUI yok, sadece terminal kontrolu mevcut)
+		ROS:
+			ros-indigo-ros-base
+		Açýlan Node'lar:
+			roscore
+Gerekli Seyler:
+	Raspberry Pi'da UBUNTU ARM ve ROS (ros-indigo-ros-base) kurulu olmasi.
+Bilinmesi Gereken Seyler:
+	Linux'da ssh uzerinden pi'a baglanabilmek.
+Izlenecek Yol:
+	IP'lere isim atamak ve .bashrc'de gerekli degisiklikleri yapmak.
+	Node'larin calistirilmasi.
+	
