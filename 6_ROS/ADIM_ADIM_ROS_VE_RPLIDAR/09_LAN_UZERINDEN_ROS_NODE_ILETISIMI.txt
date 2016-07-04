@@ -13,8 +13,77 @@ Sistem Notlarý:
 Gerekli Seyler:
 	Raspberry Pi'da UBUNTU ARM ve ROS (ros-indigo-ros-base) kurulu olmasi.
 Bilinmesi Gereken Seyler:
-	Linux'da ssh uzerinden pi'a baglanabilmek.
+	Linux'da ssh uzerinden pi'a baglanabilmek. (Nasil yapildigini bilmiyorsan "5_raspberryPi" klasoru altindaki
+		"03_linux_ssh_uzerinden_raspberryPi_a_baglanmak.txt" adli dosyaya bakabilirsin.)
 Izlenecek Yol:
 	IP'lere isim atamak ve .bashrc'de gerekli degisiklikleri yapmak.
 	Node'larin calistirilmasi.
 	
+Oncelikle Raspberry Pi'a ssh ile baglanip þunlari yapmalisin:
+	Þimdi raspberry pi'in "pi" dedigimizde "192.168.137.50" yi anlamasi ve "laptop" dedigimizde "192.168.137.1" i anlamasi için
+	þunlari yapmamýz gerekiyor:
+		sudo nano /etc/hosts
+		karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapýþtýr:
+			192.168.137.1	laptop
+			192.168.137.59	pi
+		Hemen ardindan tuþ kombinasyonlarina bas:
+			ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+			y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+			enter	(kayit iþlemini tamamlayacak)
+		"/etc/hosts" dosyasinin nasil gorunmesi gerektigine bakmak istersen "09-2_olmasi_gereken_raspberrypi_etc_hosts" ekran alintisina bakabilirsin.
+		
+	Her terminali açtýðýmýzda ros programlarina acilista hangi adrese bakmalari gerektigini soylemek icin ".bashrc" dosyasinda gerekli deðiþiklikleri
+	yapmamýz gerekiyor:
+			sudo nano ~/.bashrc
+			karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapýþtýr:
+				export ROS_HOSTNAME=pi
+				export ROS_MASTER_URI=http://pi:11311
+			Hemen ardindan tuþ kombinasyonlarina bas:
+				ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+				y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+				enter	(kayit iþlemini tamamlayacak)
+			".bashrc" dosyasinin nasil gorunmesi gerektigine bakmak istersen "09-1_olmasi_gereken_.bashrc_raspberry" ekran alintisina bakabilirsin.
+
+			
+Linux laptopta ise þunlari yapalim:
+	Þimdi laptop'un "pi" dedigimizde "192.168.137.50" yi anlamasi ve "laptop" dedigimizde "192.168.137.1" i anlamasi için
+	þunlari yapmamýz gerekiyor:
+		sudo nano /etc/hosts
+		karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapýþtýr:
+			192.168.137.1	laptop
+			192.168.137.59	pi
+		Hemen ardindan tuþ kombinasyonlarina bas:
+			ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+			y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+			enter	(kayit iþlemini tamamlayacak)
+		"/etc/hosts" dosyasinin nasil gorunmesi gerektigine bakmak istersen "09-3_olmasi_gereken_linux_etc_hosts" ekran alintisina bakabilirsin.
+		
+	Her terminali açtýðýmýzda ros programlarina acilista hangi adrese bakmalari gerektigini soylemek icin ".bashrc" dosyasinda gerekli deðiþiklikleri
+	yapmamýz gerekiyor:
+		sudo nano ~/.bashrc
+		karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapýþtýr:
+			export ROS_HOSTNAME=laptop
+			export ROS_MASTER_URI=http://pi:11311
+		Hemen ardindan tuþ kombinasyonlarina bas:
+			ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+			y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+			enter	(kayit iþlemini tamamlayacak)
+		".bashrc" dosyasinin nasil gorunmesi gerektigine bakmak istersen "09-4_olmasi_gereken_.bashrc_linux" ekran alintisina bakabilirsin.
+
+Þimdi, tüm terminalleri kapat.
+
+Yeni bir terminal açýp raspberry pi'a ssh ile baðlan ve þu komutu çalýþtýr:
+	roscore
+	Bu, ros ana modulunu çalýþtýracaktr. Baþarýlý olarak açýldýðýnda karþýna "09-5_roscore_cikti" ekran alintisi gibi bir sey cikmali.
+
+Þimdi, linux'ta ros programlarini calistiracagiz ve calistirdigimiz bu programlar raspberry pi'da actigimiz roscore'a baglanacaklar:
+	yeni bir terminal aç ve þu komutu calistir:
+		rosrun turtlesim turtlesim_node
+	komutu calistirdiginda ne olmasi gerektigini gormek icin "09-6_turtlesim_node" ekran alintisina bakabilirsin.
+	yeni bir tane daha terminal aç ve þu komutu çalýþtýr:
+		rosrun turtlesim turtle_teleop_key
+	komutu calistirdiginda ne olmasi gerektigini gormek icin "09-7_turtle_teleop_key" ekran alintisina bakabilirsin.	
+	simdi, "rosrun turtlesim turtle_teleop_key" komutunu calistirmanla karsina cikan pencereye tikla ve "w" "a" "s" "d"
+	tuslarina basarak kaplumbaga resmini hareket ettir.
+
+Her sey basarili bir sekilde gerceklesti ise kaplumbaga hareket etmeli.
