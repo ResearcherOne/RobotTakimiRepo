@@ -1,0 +1,47 @@
+---------------------OPEN CV KURULUŞ-----------------------
+https://aanx04.wordpress.com/2013/10/31/install-opencv-2-4-5-di-linux-mint-14-nadia/
+--------------------------------------------------
+
+1-Terminali açıp aşağıdaki komutları çalıştırın:
+(şifre yazman gerekebilir)
+
+sudo apt-get update
+sudo apt-get upgrade
+
+(update yazılım kaynaklarını güncellerken upgrade programları güncelleyecek)
+
+2- OpenCV indirme
+Aşağıdaki komutları, paranteziçindeki açıklamalar hariç terminale yazıyoruz:
+
+cd
+(opencv'yi home 'a kurduğumuz için ilk önce home'a giden komut)
+
+sudo wget https://github.com/Itseez/opencv/archive/2.4.13.zip
+(zip halinde open cv indiren komut)
+
+sudo apt-get install unzip
+(kurabilmeniz için içeriği zipten çıkarmanız yani unzip etmeniz gerekecek bunun için unzip programını indiriyoruz)
+
+unzip 2.4.13.zip
+(unzip eden komut)
+
+cd opencv-2.4.13/
+(unzip ettiğimiz dosyanın içine gitme komutu)
+
+3-Compile etme aşaması
+Aşağıdaki kodları ardı ardına terminale girin:
+
+cd '~/opencv-2.4.13/samples/c'
+
+chmod +x build_all.sh
+
+./build_all.sh
+
+4-Test etme
+Kurduğumuz OpenCV programının içerisinde hazır olan facedetect yani yüz tanıma programını webcam'imizi bağladıktan 
+sonra kurulumun başarılı olup olmadığını test etmek için çalıştırmayı deniyoruz. Bunun için aşağıdaki kodları terminale giriniz.
+
+./facedetect
+
+eğer önünüze kamera görüntüsü çıkıyor ve suratınızı işaretlenmiş görebiliyorsanız kurulum başarılı olmuştur.
+bir sonraki aşama için haartraining kurulum dökümantasyonuna ilerleyiniz.
