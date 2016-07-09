@@ -1,0 +1,27 @@
+sudo apt-get update
+sudo apt-get upgrade
+cd ~
+mkdir lidar-catkin-workspace
+mkdir src
+cd src
+git clone -b slam https://github.com/robopeak/rplidar_ros.git
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam
+sudo apt-get install ros-indigo-cv-bridge
+sudo apt-get install ros-indigo-qt-build
+sudo apt-get install ros-indigo-qt-create
+sudo apt-get install libqt4-dev
+sudo apt-get install ros-indigo-image-transportsudo
+sudo apt-get install ros-indigo-laser-geometry
+sudo apt-get install ros-indigo-tf-conversions
+
+cd /
+sudo dd if=/dev/zero of=swapfile bs=1M count=2000
+sudo mkswap swapfile
+sudo swapon swapfile
+sudo nano etc/fstab
+	ADD THIS LINE "/swapfile none swap sw 0 0"
+cd ~/lidar-catkin-workspace
+
+catkin_make
+
+06_laptopta_rviz_raspberryPida_hector_slam_calistirmak.txt

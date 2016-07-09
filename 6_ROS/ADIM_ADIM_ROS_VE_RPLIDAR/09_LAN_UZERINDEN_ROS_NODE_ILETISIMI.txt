@@ -8,7 +8,7 @@ Sistem Notlarý:
 	Raspberry Pi 2: Ubuntu ARM (GUI yok, sadece terminal kontrolu mevcut)
 		ROS:
 			ros-indigo-ros-base
-		Açýlan Node'lar:
+		Açilan Node'lar:
 			roscore
 Gerekli Seyler:
 	Raspberry Pi'da UBUNTU ARM ve ROS (ros-indigo-ros-base) kurulu olmasi.
@@ -35,7 +35,7 @@ Oncelikle Raspberry Pi'a ssh ile baglanip þunlari yapmalisin:
 	Her terminali açtýðýmýzda ros programlarina acilista hangi adrese bakmalari gerektigini soylemek icin ".bashrc" dosyasinda gerekli deðiþiklikleri
 	yapmamýz gerekiyor:
 			sudo nano ~/.bashrc
-			karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapýþtýr:
+			karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapistir:
 				export ROS_HOSTNAME=pi
 				export ROS_MASTER_URI=http://pi:11311
 			Hemen ardindan tuþ kombinasyonlarina bas:
@@ -46,10 +46,10 @@ Oncelikle Raspberry Pi'a ssh ile baglanip þunlari yapmalisin:
 
 			
 Linux laptopta ise þunlari yapalim:
-	Þimdi laptop'un "pi" dedigimizde "192.168.137.50" yi anlamasi ve "laptop" dedigimizde "192.168.137.1" i anlamasi için
+	Simdi laptop'un "pi" dedigimizde "192.168.137.50" yi anlamasi ve "laptop" dedigimizde "192.168.137.1" i anlamasi için
 	þunlari yapmamýz gerekiyor:
 		sudo nano /etc/hosts
-		karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapýþtýr:
+		karþýna çýkan yerde en alta gel ve þu iki satiri en alta yapistir:
 			192.168.137.1	laptop
 			192.168.137.59	pi
 		Hemen ardindan tuþ kombinasyonlarina bas:
@@ -72,15 +72,15 @@ Linux laptopta ise þunlari yapalim:
 
 Þimdi, tüm terminalleri kapat.
 
-Yeni bir terminal açýp raspberry pi'a ssh ile baðlan ve þu komutu çalýþtýr:
+Yeni bir terminal açýp raspberry pi'a ssh ile baglan ve su komutu calistir:
 	roscore
-	Bu, ros ana modulunu çalýþtýracaktr. Baþarýlý olarak açýldýðýnda karþýna "09-5_roscore_cikti" ekran alintisi gibi bir sey cikmali.
+	Bu, ros ana modulunu çalýþtýracaktr. Basarili olarak acildiginda karþýna "09-5_roscore_cikti" ekran alintisi gibi bir sey cikmali.
 
-Þimdi, linux'ta ros programlarini calistiracagiz ve calistirdigimiz bu programlar raspberry pi'da actigimiz roscore'a baglanacaklar:
+Simdi, linux'ta ros programlarini calistiracagiz ve calistirdigimiz bu programlar raspberry pi'da actigimiz roscore'a baglanacaklar:
 	yeni bir terminal aç ve þu komutu calistir:
 		rosrun turtlesim turtlesim_node
 	komutu calistirdiginda ne olmasi gerektigini gormek icin "09-6_turtlesim_node" ekran alintisina bakabilirsin.
-	yeni bir tane daha terminal aç ve þu komutu çalýþtýr:
+	yeni bir tane daha terminal aç ve su komutu calistir:
 		rosrun turtlesim turtle_teleop_key
 	komutu calistirdiginda ne olmasi gerektigini gormek icin "09-7_turtle_teleop_key" ekran alintisina bakabilirsin.	
 	simdi, "rosrun turtlesim turtle_teleop_key" komutunu calistirmanla karsina cikan pencereye tikla ve "w" "a" "s" "d"

@@ -1,0 +1,23 @@
+Laptop ve Raspberry Pi ethernet ile birbirine bagli, laptopta sunlari yap:
+laptop wired connection ip'si 192.168.137.1'e sabitlendi
+raspberry pi ip'si 192.168.137.48'e sabitlendi.
+
+TERMINAL1: (RASPBERRY PI'DA ROSCORE)
+	ssh ubuntu@192.168.137.48
+	export ROS_IP=192.168.137.48
+	export ROS_MASTER_URI=http://192.168.137.48:11311
+	roscore
+TERMINAL2: (RASPBERRY PI DA CALISACAK MODULLER)
+	ssh ubuntu@192.168.137.48
+	cd ~/lidar-catkin-workspace/devel
+	source setup.bash
+	export ROS_IP=192.168.137.48
+	export ROS_MASTER_URI=http://192.168.137.48:11311
+	roslaunch rplidar_ros backend_slam.launch
+
+TERMINAL3: (LAPTOPTA CALISACAK MODUL)
+	cd ~/catkin_lidar_ws/devel
+	source setup.bash
+	export ROS_IP=192.168.137.1
+	export ROS_MASTER_URI=http://192.168.137.48:11311
+	roslaunch rplidar_ros test_view_slam.launch
