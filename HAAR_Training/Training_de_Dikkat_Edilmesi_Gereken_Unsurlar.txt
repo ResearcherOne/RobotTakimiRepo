@@ -1,0 +1,13 @@
+
+
+-ilk önce merge.py dan elde ettiğin sonuçları gözlemle. gerekliyse kendi tool'una yönel. İkisinide aynı anda da bir dene.
+
+-Pixel çözünürlük --> robotun prize olan mesafesine göre ----> robotun kamerasının çözünürlüğüne göre
+
+-Negatif sample sayısı, pozitif sample'lara göre ya *1 *2 *3 daha fazla değil !(scale değiştirerek deneyerek öğren)
+
+-Positif sample çoğaltırken kendi tool daha iyi olabilir çok alakasız şeyler hoş değil. Kendi tool'un 1 dereceden 5 dereceye kadar sağa ve sola kaydırabilir. Bu şekilde çoğaltılabilir. Open Cv de yazılabilecek kod.
+
+-Negatif sample'lar ayrıntı içermeli boş duvarlar bir anlam ifade etmiyor. ----> Hep robot yüksekliğinde olması önemli.
+
+-Bunun için gezerken video çeken robot ----> böylece frame'ler kesilip positif negatif sample eldesi..
