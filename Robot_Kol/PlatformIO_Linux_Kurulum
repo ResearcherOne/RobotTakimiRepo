@@ -1,0 +1,98 @@
+Öncelikle ESP8266 modülü için kullanacağımız IDE olan PlatformIo IDE'yi indiriyoruz.
+Bunu için aşağıdaki linki browser'a girmeniz yeterli.
+
+http://platformio.org/get-started/ide?dl=platformio-atom-linux-x86_64.deb
+
+(eğer link ölmüş ise browser ile aşağıdaki linke girip Download for Linux altındaki ".deb" uzantılı dosyayı indiriyoruz.
+http://platformio.org/platformio-ide#other-platforms)
+
+Browser'a girdiğiniz adrese ulaştığınız gibi önünüze bir kutucuk çıkacak, orada aşağıdaki Save File button'una tıklayıp devam ediyoruz.
+
+Package installer dolumu tamamlanmasının ardından "Install Package" tuşuna basıp kurulumun tamamlanmasını bekliyoruz.
+
+Kurulum tamamlandıktan sonra pencereleri terminal'e
+atom
+yazıyoruz ve programı açıyoruz. Programın açılmasının kısa bir süre ardından Atom'a platformio kurulmaya başlayacak ve bitmesinin ardından çıkan pencerede "reload now" tuşuna basıp programın kapanıp açılmasını sağlıyoruz.
+
+ Şimdi sırada ESP8266 ile iletişim geçebilmeniz için arada kullandığınız usb kablosunun bilgisayarınız tarafından tanımlanmasını sağlayacak sürücüyü kurmamız gerekiyor.
+
+ Bunun için aşağıdaki adresi browser'a girip Linux sürümünüze göre olan dosyayı indiriyoruz.
+
+https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx
+
+Eğer Linux sürümünüz bilmemekte iseniz terminali açıp
+uname -r
+komutunu girip öğrenebilirsiniz. Eğer komuutun altında 3.13.0 gibisinden bir şey bastırırsa Linux 3.X.X i eğer 2.6.0 gibi birşey bastırırsa Linux 2.6.X'i(X'ler vesaire anlamında kullanılıyor) "Download VCP" ye tıklayarak indirebilirsiniz.
+
+ İndirdiğiniz dosya zip formatında Downloads klasörü içerisinde bulunuyor. Bu klasörü zip formatından açılabilir dosya haline getirmek için önce unzip programını kuracağız.
+ Unzip kurmak için terminale,
+sudo apt-get install unzip
+komutunu girip kullanıcı şifremizi giriyoruz.
+
+ Şimdi indirdiğimiz dosyayı unzip etmek için terminali açıp Downloads klasörünün içerisine girmek için
+cd Downloads 
+komutunu giriniz.
+
+	Hemen ardından terminale,
+
+unzip Linux_3.X.X_VCP_Driver_Source.zip
+
+komutunu girerek klasörü çıkarıyoruz.
+(Eğer indirdiğiniz dosya Linux sürümünüzden ötürü Linux 2.6.x ise komut 
+unzip Linux_2.6.X_VCP_Driver_Source.zip olacak).
+
+ Şimdi dosyanın çıkarttığımız dosyanın içerisine girmek için aşağıdaki komutu giriyoruz.
+
+cd Linux_3.X.X_VCP_Driver_Source
+
+ Dosyanın içerisinde olmamızın ardından. Dosyanın içerisindeki make dosyasını çalıştırmak için terminale,
+make
+komutunu giriyoruz. Ardından terminale,
+sudo cp cp210x.ko /lib/modules/<kernel-version>/kernel/drivers/usb/serial
+
+komutunu <kernel-versions> kısmı yerine uname-r yazdığınızda terminalde çıkan yazıyı kopyalayıp yapıştırın.
+ Şimdi terminale 
+sudo insmod /lib/modules/<kernel-version/kernel/drivers/usb/serial/usbserial.ko
+komutunu girip yine kernel-versions kısmını daha önce yaptığımız gibi değiştiriyoruz.
+Ardından terminale 
+sudo insmod cp210x.ko 
+komutunu giriyoruz.
+
+ Sonrasında terminale,
+sudo apt-get install g++
+komutunu giriyoruz ve y tuşuna basıyoruz.
+
+Şimdi USB cihazlara erisebildigimizden emin olmak icin;
+Bu Komutlari Calistir (DÝKKAT!!! "sami" yerine kendi kullanici adini yazmalisin.):
+	groups sami
+	
+sonucta cikan uye oldugunuz gruplar arasinda
+	"dialout"
+grubu yoksa kendini bu gruba eklemen gerekiyor. 
+
+---Bu kisim dialout grubuna girmek için---
+Bu Komutlari Calistir:
+	sudo gpasswd --add sami dialout
+DÝKKAT!!! "sami" yerine kendi kullanici adini yazmalisin.
+Hemen ardindan bilgisayar oturumunu kapatip tekrar aç
+	ya da basitçe bilgisayari yeniden baþlat.
+
+Şimdi çalıştığımız dosyaya gitmek için terminale,
+cd ~/Downloads/Linux_3.x.x_VCP_Driver_Source
+yazıyoruz. Ardından terminali kapamadan dosyalara (Files) gidip Download dosyasına tıklayıp,sonra Linux_3.x.x_VCP_Driver_Source'a tıklayıp, sonrada cp210x_gpio_example.c ye tıklıyoruz.Buraya tıklamamız ardından editörde karşımıza bir kod çıkacak. Bu kodda,
+#include <iostream>
+#include <fcntl.h>
+#include <stropts.h>
+
+kısmının altına,
+
+#include <termios.h>
+
+kısmını yapıştırıyoruz ve save ediyoruz.
+Son olarak çalışmakta olduğumuz terminali geri açıp,
+g++ cp210x_gpio_example.c -o cp210x_gpio_example
+komutunu giriyoruz ve işlemin ardından
+./cp210x_gpio_example
+komutunu giriyoruz.
+ Artık ESP8266 ile iletişim kurabilir ve Atom da yazdığınız kodları çalıştırabilirsiniz.
+

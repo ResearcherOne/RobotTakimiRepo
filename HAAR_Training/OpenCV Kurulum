@@ -1,6 +1,4 @@
 ---------------------OPEN CV KURULUŞ-----------------------
-https://aanx04.wordpress.com/2013/10/31/install-opencv-2-4-5-di-linux-mint-14-nadia/
---------------------------------------------------
 
 1-Terminali açıp aşağıdaki komutları çalıştırın:
 (şifre yazman gerekebilir)
@@ -31,7 +29,7 @@ cd opencv-2.4.13/
 3-Compile etme aşaması
 Aşağıdaki kodları ardı ardına terminale girin:
 
-cd '~/opencv-2.4.13/samples/c'
+cd ~/opencv-2.4.13/samples/c
 
 chmod +x build_all.sh
 
