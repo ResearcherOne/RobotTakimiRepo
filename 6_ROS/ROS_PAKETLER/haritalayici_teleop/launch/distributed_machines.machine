@@ -1,0 +1,3 @@
+<launch>
+        <machine name="pi" address="192.168.137.48" user="root" password="ubuntu" env-loader="/home/ubuntu/load-env-remote-pi.sh"/>
+</launch>

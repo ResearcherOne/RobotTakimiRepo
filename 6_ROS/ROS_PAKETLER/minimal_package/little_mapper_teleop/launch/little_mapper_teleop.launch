@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find little_mapper_teleop)/launch/distributed_machines.machine"/>
+	<node name="keyboard_node" pkg="keyboard" type="keyboard"/>
+	<node name="little_mapper_teleop_node" pkg="little_mapper_teleop" type="little_mapper_teleop_node"/>
+</launch>
