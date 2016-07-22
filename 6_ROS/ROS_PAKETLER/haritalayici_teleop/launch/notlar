@@ -1,0 +1,7 @@
+haritalayici_teleop_slam.launch için:
+	source /opt/ros/indigo/setup.bash
+	source /home/ubuntu/catkin_test_space/devel/setup.sh
+	export ROS_PACKAGE_PATH=/home/ubuntu/lidar_workspace:$ROS_PACKAGE_PATH
+	export ROSLAUNCH_SSH_UNKNOWN=1
+	export ROS_IP=192.168.137.1
+	export ROS_MASTER_URI=http://192.168.137.1:11311
