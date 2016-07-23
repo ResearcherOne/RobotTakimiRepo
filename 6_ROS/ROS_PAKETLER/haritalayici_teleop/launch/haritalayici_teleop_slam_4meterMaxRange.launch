@@ -1,5 +1,5 @@
 <launch>
-	<include file="$(find haritalayici_teleop)/launch/distributed_machines.machine"/>
+	<include file="/home/ubuntu/catkin_test_space/src/haritalayici_teleop/launch/distributed_machines.machine"/>
 
 	<node name="keyboard" pkg="keyboard" type="keyboard">
 	</node>
@@ -13,6 +13,8 @@
 	<node name="third_gpio_control_node" pkg="third_gpio_control" type="third_gpio_control_node" output="screen" machine="pi">
 	</node>
 	
+
+
 	<node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen" machine="pi">
 	  <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
 	  <param name="serial_baudrate"     type="int"    value="115200"/>
@@ -45,8 +47,12 @@
 	    <param name="map_size" value="1024"/>
 	    <param name="map_start_x" value="0.5"/>
 	    <param name="map_start_y" value="0.5"/>
+		<param name="laser_max_dist" value="4"/>
 	</node>
 
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rplidar_ros)/rviz/slam.rviz" />
 
-</launch>
+
+	<node name="imuToTf" pkg="hector_imu_attitude_to_tf" type="imu_attitude_to_tf_node" machine="pi"/>
+
+	</launch>
