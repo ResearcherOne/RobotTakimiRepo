@@ -1,5 +1,5 @@
 <launch>
-	<include file="$(find haritalayici_teleop)/launch/distributed_machines.machine"/>
+	<include file="/home/ubuntu/catkin_test_space/src/haritalayici_teleop/launch/distributed_machines.machine"/>
 
 	<node name="keyboard" pkg="keyboard" type="keyboard">
 	</node>
@@ -18,7 +18,7 @@
 	<node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen" machine="pi">
 	  <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
 	  <param name="serial_baudrate"     type="int"    value="115200"/>
-	  <param name="frame_id"            type="string" value="laser"/>
+~/workspace-ONLY/repolar/RobotTakimiRepo/6_ROS/ROS_PAKETLER/haritalayici_teleop/launch	  <param name="frame_id"            type="string" value="laser"/>
 	  <param name="inverted"            type="bool"   value="true"/>
 	  <param name="angle_compensate"    type="bool"   value="true"/>
 	 </node>
@@ -55,4 +55,5 @@
 
 	<node name="imuToTf" pkg="hector_imu_attitude_to_tf" type="imu_attitude_to_tf_node" machine="pi"/>
 
-	</launch>
+	<node pkg="move_base" type="move_base" name="move_base" machine="pi"/>
+</launch>

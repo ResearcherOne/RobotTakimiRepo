@@ -1,5 +1,5 @@
 <launch>
-	<include file="/home/ubuntu/catkin_test_space/src/haritalayici_teleop/launch/distributed_machines.machine"/>
+	<include file="$(find haritalayici_teleop)/launch/distributed_machines.machine"/>
 
 	<node name="keyboard" pkg="keyboard" type="keyboard">
 	</node>
