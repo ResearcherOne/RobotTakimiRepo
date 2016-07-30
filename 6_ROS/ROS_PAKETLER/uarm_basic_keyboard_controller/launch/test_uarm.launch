@@ -1,0 +1,19 @@
+<launch>
+        <node name="keyboard" pkg="keyboard" type="keyboard">
+        </node>
+        <node name="uarm_basic_keyboard_controller" pkg="uarm_basic_keyboard_controller" type="uarm_basic_keyboard_controller_node" output="screen">
+                <remap from="keydown" to="keyboard/keydown"/>
+                <remap from="keyup" to="keyboard/keyup"/>
+        	<param name="isVerticalKeyInversed" type="bool" value="true"/>
+		<param name="isHorizontalKeyInversed" type="bool" value="true"/>
+		<param name="isBaseKeyInversed" type="bool" value="false"/>
+		<param name="uarmPoseRate" type="int" value="30"/>
+		<param name="uarmPublishRate" type="int" value="50"/>
+	</node>
+        <arg name="port" default="/dev/ttyUSB0"/>
+        <include file="$(find rosserial_server)/launch/serial.launch">
+                <arg name="port" value="$(arg port)" />
+        </include>
+
+</launch>
+

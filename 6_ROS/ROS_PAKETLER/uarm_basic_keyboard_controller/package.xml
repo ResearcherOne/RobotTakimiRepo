@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>uarm_basic_keyboard_controller</name>
+  <version>0.0.0</version>
+  <description>Basic UARM control with keyboard</description>
+
+  <maintainer email="birkan.kolcu@ozu.edu.tr">birkan kolcu</maintainer>
+
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>keyboard</build_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>keyboard</run_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
