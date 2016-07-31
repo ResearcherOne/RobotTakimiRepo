@@ -1,3 +1,6 @@
+Bunlari yapmadan once 00_NOTLAR i oku ve 01_ubuntu_software_n_updates, 02_ubuntu_software_n_updates te gorunen seyleri yap.
+Baslamadan once bunu yapman cok onemli.
+
 Bu Komutlari Calistir:
 	sudo touch /etc/apt/sources.list.d/ros-latest.list
 	sudo nano /etc/apt/sources.list.d/ros-latest.list
