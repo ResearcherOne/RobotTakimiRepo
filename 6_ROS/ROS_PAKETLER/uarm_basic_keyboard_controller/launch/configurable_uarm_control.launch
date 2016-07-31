@@ -1,6 +1,7 @@
 <launch>
 	<arg name="spawn_keyboard" default="true"/>
         <arg name="spawn_rosserial" default="true"/>	
+	<arg name="use_default_machines" default="true"/>
 
 	<arg name="keyboard_keydown" default="keyboard/keydown"/>
 	<arg name="keyboard_keyup" default="keyboard/keyup"/>
@@ -10,20 +11,26 @@
 	<arg name="uarmPoseRate" default="30"/>
 	<arg name="uarmPublishRate" default="40"/>
 
-	<arg name="port" default="/dev/ttyUSB0"/>	
-        
-	<node name="keyboard" pkg="keyboard" type="keyboard" if="$(arg spawn_keyboard)"/>
-        <node name="uarm_basic_keyboard_controller" pkg="uarm_basic_keyboard_controller" type="uarm_basic_keyboard_controller_node" output="screen">
+	<arg name="port" default="/dev/ttyUSB0"/>
+
+	<arg name="local_machine" default="laptop"/>
+	<arg name="remote_machine" default="laptop"/>
+
+	<machine name="laptop" address="localhost" env-loader="/opt/ros/indigo/env.sh" if="$(arg use_default_machines)"/>
+
+	<node name="keyboard" pkg="keyboard" type="keyboard" machine="$(arg local_machine)" if="$(arg spawn_keyboard)"/>
+        <node name="uarm_basic_keyboard_controller" pkg="uarm_basic_keyboard_controller" type="uarm_basic_keyboard_controller_node" output="screen" machine="$(arg local_machine)">
                 <remap from="keydown" to="$(arg keyboard_keydown)"/>
-                <remap from="keyup" to="$(arg keyboard_keydown)"/>
+                <remap from="keyup" to="$(arg keyboard_keyup)"/>
         	<param name="isVerticalKeyInversed" type="bool" value="$(arg isVerticalKeyInversed)"/>
 		<param name="isHorizontalKeyInversed" type="bool" value="$(arg isHorizontalKeyInversed)"/>
 		<param name="isBaseKeyInversed" type="bool" value="$(arg isBaseKeyInversed)"/>
 		<param name="uarmPoseRate" type="int" value="$(arg uarmPoseRate)"/>
 		<param name="uarmPublishRate" type="int" value="$(arg uarmPublishRate)"/>
 	</node>
-        <include file="$(find rosserial_server)/launch/serial.launch" if="$(arg spawn_keyboard)">
-                <arg name="port" value="$(arg port)" />
-        </include>
+        
+	<node pkg="rosserial_server" type="serial_node" name="rosserial_server" machine="$(arg remote_machine)">
+    		<param name="port" value="$(arg port)" />
+  	</node>
+	<node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" machine="$(arg remote_machine)"/>
 </launch>
-

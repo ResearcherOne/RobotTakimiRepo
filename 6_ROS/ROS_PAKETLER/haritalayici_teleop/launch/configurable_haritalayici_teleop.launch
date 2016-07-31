@@ -1,0 +1,23 @@
+<launch>
+	<arg name="spawn_keyboard" default="true"/>
+	<arg name="use_default_machines" default="true"/>
+	
+	<arg name="keyboard_keydown" default="keyboard/keydown"/>
+        <arg name="keyboard_keyup" default="keyboard/keyup"/>
+	<arg name="move_control" default="test_gpio_control"/>
+
+	<arg name="remote_machine" default="pi"/>
+	<arg name="local_machine" default="laptop"/>
+	
+	<machine name="pi" address="192.168.137.48" user="root" password="ubuntu" env-loader="/home/ubuntu/load-env-remote-pi.sh" if="$(arg use_default_machines)"/>
+	<machine name="laptop" address="localhost" env-loader="/opt/ros/indigo/env.sh" if="$(arg use_default_machines)"/>
+	
+
+	<node name="keyboard" pkg="keyboard" type="keyboard" if="$(arg spawn_keyboard)" machine="$(arg local_machine)"/>
+	<node name="haritalayici_teleop_node" pkg="haritalayici_teleop" type="haritalayici_teleop_node" output="screen" machine="$(arg local_machine)">
+		<remap from="keydown" to="$(arg keyboard_keydown)"/>
+		<remap from="keyup" to="$(arg keyboard_keyup)"/>
+		<remap from="move" to="$(arg move_control)"/>
+	</node>
+	<node name="third_gpio_control_node" pkg="third_gpio_control" type="third_gpio_control_node" output="screen" machine="$(arg remote_machine)"/>	
+</launch>

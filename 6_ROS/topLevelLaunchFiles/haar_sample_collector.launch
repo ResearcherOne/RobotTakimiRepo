@@ -1,0 +1,22 @@
+<launch>
+	<include file="/home/researcher1/workspace-ONLY/ros/testLaunchFiles/topLevelLaunchFiles/wifi_connected.machine"/>	
+
+	<include file="$(find haritalayici_teleop)/launch/configurable_haritalayici_teleop.launch">
+		<arg name="spawn_keyboard" value="true"/>
+		<arg name="use_default_machines" value="false"/>
+
+		<arg name="remote_machine" value="pi"/>
+        	<arg name="local_machine" value="laptop"/>		
+	</include>
+
+	<include file="$(find uarm_basic_keyboard_controller)/launch/configurable_uarm_control.launch">
+		<arg name="spawn_keyboard" value="false"/>
+		<arg name="spawn_rosserial" value="true"/>
+                <arg name="use_default_machines" value="false"/>
+
+                <arg name="remote_machine" value="pi"/>
+                <arg name="local_machine" value="laptop"/>
+                <arg name="port" value="/dev/ttyUSB0"/>
+        </include>
+</launch>
+

@@ -1,0 +1,7 @@
+<launch>
+<include file="$(find haritalayici_teleop)/launch/configurable_haritalayici_teleop.launch">
+        <arg name="machine_file_fullpath" default="$(find haritalayici_teleop)/launch/local_machines.machine"/>        
+	<arg name="local_machine" value="laptop"/>
+	<arg name="remote_machine" value="pi"/>
+</include>
+</launch>

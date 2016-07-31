@@ -1,0 +1,13 @@
+<launch>
+	<include file="$(find haritalayici_teleop)/launch/local_machines.machine"/>
+	<node name="keyboard" pkg="keyboard" type="keyboard">
+	</node>
+	<node name="haritalayici_teleop_node" pkg="haritalayici_teleop" type="haritalayici_teleop_node" output="screen">
+		<remap from="keydown" to="keyboard/keydown"/>
+		<remap from="keyup" to="keyboard/keyup"/>
+		<remap from="move" to="test_gpio_control"/>
+	</node>
+	<node name="third_gpio_control_node" pkg="third_gpio_control" type="third_gpio_control_node" output="screen" machine="pi">
+	</node>
+	
+</launch>

@@ -23,7 +23,7 @@
 	  <param name="angle_compensate"    type="bool"   value="true"/>
 	 </node>
 
-	<node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 base_link laser 100" machine="pi"/>
+	<node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0.3 0 0 0 0 0 base_link laser 100" machine="pi"/>
 
 	<node pkg="hector_mapping" type="hector_mapping" name="hector_height_mapping" output="screen" machine="pi">
 	    <param name="scan_topic" value="scan" />
