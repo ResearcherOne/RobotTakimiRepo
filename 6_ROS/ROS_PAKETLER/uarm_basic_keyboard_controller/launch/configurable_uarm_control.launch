@@ -1,0 +1,29 @@
+<launch>
+	<arg name="spawn_keyboard" default="true"/>
+        <arg name="spawn_rosserial" default="true"/>	
+
+	<arg name="keyboard_keydown" default="keyboard/keydown"/>
+	<arg name="keyboard_keyup" default="keyboard/keyup"/>
+	<arg name="isVerticalKeyInversed" default="true"/>
+	<arg name="isHorizontalKeyInversed" default="true"/>
+	<arg name="isBaseKeyInversed" default="false"/>
+	<arg name="uarmPoseRate" default="30"/>
+	<arg name="uarmPublishRate" default="40"/>
+
+	<arg name="port" default="/dev/ttyUSB0"/>	
+        
+	<node name="keyboard" pkg="keyboard" type="keyboard" if="$(arg spawn_keyboard)"/>
+        <node name="uarm_basic_keyboard_controller" pkg="uarm_basic_keyboard_controller" type="uarm_basic_keyboard_controller_node" output="screen">
+                <remap from="keydown" to="$(arg keyboard_keydown)"/>
+                <remap from="keyup" to="$(arg keyboard_keydown)"/>
+        	<param name="isVerticalKeyInversed" type="bool" value="$(arg isVerticalKeyInversed)"/>
+		<param name="isHorizontalKeyInversed" type="bool" value="$(arg isHorizontalKeyInversed)"/>
+		<param name="isBaseKeyInversed" type="bool" value="$(arg isBaseKeyInversed)"/>
+		<param name="uarmPoseRate" type="int" value="$(arg uarmPoseRate)"/>
+		<param name="uarmPublishRate" type="int" value="$(arg uarmPublishRate)"/>
+	</node>
+        <include file="$(find rosserial_server)/launch/serial.launch" if="$(arg spawn_keyboard)">
+                <arg name="port" value="$(arg port)" />
+        </include>
+</launch>
+
