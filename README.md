@@ -57,3 +57,5 @@
 	#Dependenencies:
 		Wifi API:	https://github.com/tlhunter/node-wireless
 		MQTT API: 
+#Video Diary Link:
+	https://www.youtube.com/watch?v=aMHOmCP7reY&list=PLIdKqNOzltlwOTcxoQ6y2CK0AK1hCf2Rg
