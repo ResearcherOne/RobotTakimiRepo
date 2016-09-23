@@ -1,3 +1,8 @@
+#Project Related Other Links:
+	#Video Diary
+		https://www.youtube.com/watch?v=aMHOmCP7reY&list=PLIdKqNOzltlwOTcxoQ6y2CK0AK1hCf2Rg
+	#Project website
+		icatet.org
 #Description:
 	Aim is to build a modular robotic platform that will eneable you to develop robotic systems that is mostly focused on
 		localization and 2D LIDAR mapping.
@@ -57,5 +62,3 @@
 	#Dependenencies:
 		Wifi API:	https://github.com/tlhunter/node-wireless
 		MQTT API: 
-#Video Diary Link:
-	https://www.youtube.com/watch?v=aMHOmCP7reY&list=PLIdKqNOzltlwOTcxoQ6y2CK0AK1hCf2Rg
