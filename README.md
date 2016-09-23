@@ -1,4 +1,4 @@
-#Project Related Other Links:
+#Project Related Links:
 	#Video Diary
 		https://www.youtube.com/watch?v=aMHOmCP7reY&list=PLIdKqNOzltlwOTcxoQ6y2CK0AK1hCf2Rg
 	#Project website
