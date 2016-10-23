@@ -1,0 +1,116 @@
+catkin-workspace'inizi olusturmadiysan once catkin_workspace'i olusturmalisin.
+	0_catkin_workspace_olusturmak.txt
+
+catkin workspace'e gir:
+	cd ~/catkin_ws/
+
+catkin workspace'inde "src" klasorunu olustur
+	mkdir src
+
+simdi olusturdugun "src" klasorunun icine gir.
+	cd src
+	
+Bu komut, "BENIM_HARIKA_YAZILIM_PAKETIM" adinda bos bir ROS paketi olusturacak
+	catkin_create_pkg BENIM_HARIKA_YAZILIM_PAKETIM
+	
+Simdi, olusturdugun yazilim paketi klasorunun icine gir.
+	cd BENIM_HARIKA_YAZILIM_PAKETIM
+
+Bu klasorun icindeki CMakeLists.txt'yi degistirmen gerekiyor. Bu dosyayi silip daha sade bir CMakeLists dosyasi olusturacagiz.
+	rm CMakeLists.txt
+	touch CMakeLists.txt
+	nano CMakeLists.txt
+
+Simdi, bu dosyayi editorle actik, asagidaki seyleri gordugun ekrana yapistir.
+	cmake_minimum_required(VERSION 2.8.3)
+	project(BENIM_HARIKA_YAZILIM_PAKETIM)
+
+	find_package(catkin REQUIRED COMPONENTS rospy std_msgs)
+
+	catkin_package(
+	)
+	
+Simdi dosyayi kaydedip editorden cikmamiz gerekiyor, asagidaki tuslara sirasiyla bas
+	ctrl + x (ctrl tusuna basili tut ve "x" e bas)
+	y
+
+Simdi ise "package.xml" dosyasini silip kendimiz daha sade bir package.xml kullanacagiz.
+	rm package.xml
+	touch package.xml
+	nano package.xml
+
+Simdi, bu dosyayi editorle actik, asagidaki seyleri gordugun ekrana yapistir.
+	<package>
+	  <name>BENIM_HARIKA_YAZILIM_PAKETIM</name>
+	  <version>0.0.0</version>
+	  <description>The BENIM_HARIKA_YAZILIM_PAKETIM package</description>
+
+	  <maintainer email="TODO">TODO</maintainer>
+
+	  <license>TODO</license>
+	  <buildtool_depend>catkin</buildtool_depend>
+	  <build_depend>std_msgs</build_depend>
+	  <run_depend>std_msgs</run_depend>
+	  <buildtool_depend>catkin</buildtool_depend>
+
+	  <export>
+	  </export>
+	</package>
+
+Simdi dosyayi kaydedip editorden çik bunun için ise asagidaki tuslara sirasiyla bas
+	ctrl + x (ctrl tusuna basili tut ve "x" e bas)
+	y
+	
+Python programini koymak için "scripts" adinda klasor olustur
+	mkdir scripts
+
+Bu klasore gir ve "talker.py" adinda ornek programi kaydedecegimiz dosyayi olustur
+	cd scripts
+	touch talker.py
+	
+"talker.py" i "executeable" yap yani çalisabilir program haline getir
+	chmod +x talker.py
+	
+Simdi talker.py'in içine ornek programi yapistir
+#!/usr/bin/env python
+
+import rospy
+from std_msgs.msg import String
+
+def talker():
+	pub = rospy.Publisher('chatter', String, queue_size=10)
+	rospy.init_node('talker', anonymous=True)
+	rate = rospy.Rate(10) # 10hz
+	while not rospy.is_shutdown():
+		hello_str = "hello world %s" % rospy.get_time()
+		rospy.loginfo(hello_str)
+		pub.publish(hello_str)
+		rate.sleep()
+
+if __name__ == '__main__':
+	try:
+		talker()
+	except rospy.ROSInterruptException:
+		pass
+			
+Simdi dosyayi kaydedip editorden çik bunun için ise asagidaki tuslara sirasiyla bas
+	ctrl + x (ctrl tusuna basili tut ve "x" e bas)
+	y
+
+Simdi ise programi derleyecegiz. Bunun için catkin-workspace'ine donmen gerekiyor
+	~/catkin_ws/
+	
+Artik derleme islemini yapalim:
+	catkin_make
+	
+Simdi ise paket gercekten calisip calismadigini test etme vakti geldi.
+	Oncelike ROS'un olusturdugun paketi gorebilmesi için derleme islemi ardindan olusan "devel" klasorundeki "setup.bash" i "source" lememiz gerekiyor.
+		cd ~/catkin_ws/devel
+		source setup.bash
+		
+Artik programi deneme vakti geldi. "rosrun" komutu ile programi calistiralim. Ama once "roscore"'un calistigindan emin olun
+	Bu arada, roscore terminalinizi kaplayacaktir. Bundan dolayi roscore'u ayri bir pencerede baslatmanizda fayda var.
+		source /opt/ros/indigo/setup.bash
+		roscore
+		
+		

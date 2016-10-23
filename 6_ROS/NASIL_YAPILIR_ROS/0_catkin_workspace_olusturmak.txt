@@ -1,0 +1,28 @@
+Bu Komutlari Calistir:
+	source /opt/ros/indigo/setup.bash
+	mkdir ~/catkin_ws
+	mkdir ~/catkin_ws/src
+	cd ~/catkin_ws/src
+	catkin_init_workspace
+	cd ~/catkin_ws/
+	catkin_make
+	source devel/setup.bash
+	
+Buraya kadar her sey dogru bir sekilde gitmisse gerekli komutu calistirditkan sonra
+	size boyle "/home/youruser/catkin_ws/src:/opt/ros/indigo/share:/opt/ros/indigo/stacks"
+	bir sey gostermeli.
+Bu Komutlari Calistir:
+	echo $ROS_PACKAGE_PATH
+	
+Simdi "source ~/catkin_ws/install/setup.bash" komutunu calistirma olayini her terminal acildiginda otomatik olarak
+	gerceklestirilmesi için bazi islemler yapacagiz.
+Bu Komutlari Calistir:
+	sudo nano ~/.bashrc
+	
+Hemen ardindan karsiniza çikan yazilarda sayfanin en altina gelin ve en alta bu satiri ekleyin:
+		(Sayfanin nasil gorunmesi gerektiginine "8-2_ornek_.bashrc" adli ekran goruntusunden bakabilirsin.)
+	source ~/catkin_ws/install/setup.bash
+Hemen ardindan tus kombinasyonlarina bas:
+	ctrl+x	(bu kombinasyon terminal editorunden cikisi saglayacak)
+	y		(bu tus ise kaydedeyim mi sorusuna evet diyecek)
+	enter	(enter tusu islemin tamamlanmasini saglayacak)
