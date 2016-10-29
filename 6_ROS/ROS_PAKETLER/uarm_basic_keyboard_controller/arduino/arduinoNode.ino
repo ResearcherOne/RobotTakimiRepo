@@ -7,9 +7,9 @@
 #include <std_msgs/Int16.h>
 #include <Servo.h>
 
-#define BASE_SERVO_PIN 14
-#define VERTICAL_SERVO_PIN 12
-#define HORIZONTAL_SERVO_PIN 13
+#define BASE_SERVO_PIN 9          //PWM PIN
+#define VERTICAL_SERVO_PIN 10     //PWM PIN
+#define HORIZONTAL_SERVO_PIN 11   //PWM PIN
 #define DEFAULT_BASE_POS 90
 #define DEFAULT_VERTICAL_POS 90
 #define DEFAULT_HORIZONTAL_POS 90
