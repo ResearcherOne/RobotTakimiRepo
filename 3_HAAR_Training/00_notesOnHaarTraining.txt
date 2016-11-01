@@ -1,0 +1,18 @@
+cut video every * time
+	ffmpeg -i input.flv -vf fps=1 out%d.png
+
+create annotion file of positives
+	oldest blog
+use annotion file to create samples
+use output of create samples to train classifer
+
+train haar:
+	opencv_traincascade -featureType LBP -w 64 -h 64 -numPos 100 -data traincascadeOutput -bg negatives.txt -acceptanceRatioBreakValue .00001 -vec object.vec
+creating samples (vec file):
+	opencv_createsamples -num 120 -vec object.vec -info samplesdescription.dat -bg negatives.txt
+creating description file for already cropped images (positives):
+	find ./ALL-Test-PositiveSet -name '*.png' -exec identify -format '%i 1 0 0 %w %h' \{\} \; > samplesdescription.dat
+add prefix to file names in a directory:
+	for f in * ; do mv "$f" "positive_bin_05_$f" ; done
+count files in a directory
+	ls -l | grep -v ^l | wc -l

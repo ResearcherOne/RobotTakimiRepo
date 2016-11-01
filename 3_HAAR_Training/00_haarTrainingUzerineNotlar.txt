@@ -1,0 +1,22 @@
+Negatif ornekleri videolardan toplamak icin ffmpeg programi kullanilabilir
+	Bu komut, "input.flv" adindaki videodan saniyede 1 kare kesecektir.
+		ffmpeg -i input.flv -vf fps=1 out%d.png
+Komutun calistirildigi yerdeki dosyalara isim on eki eklemek icin komut
+	for f in * ; do mv "$f" "isim_on_eki_$f" ; done
+Komutun calistirildigi yerdeki dosyalari sayan komut
+	ls -l | grep -v ^l | wc -l
+-----------------
+Pozitif ornekler icin "annotion file" olusturmak:
+	http://note.sonots.com/SciSoftware/haartraining.html
+Olusan annotion dosyasini "create samples" yapmak icin kullan yani elimizde olan pozitif ornekleri haar training
+	programinin anlayacagi sekilde yapilandir.
+Create samples'tan olusan dosyayi haar training yapmak icin kullanabilirsin.
+
+Ornek bir HAAR Training baslatma komutu:
+	opencv_traincascade -featureType LBP -w 64 -h 64 -numPos 100 -data traincascadeOutput -bg negatives.txt -acceptanceRatioBreakValue .00001 -vec object.vec
+Baska bir HAAR Training baslatma ornegi:
+	opencv_traincascade -data classifier -vec final_positive_vec.vec -bg negatives.txt  -numStages 15 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 1000  -numNeg 2000 -w 80 -h 80 -mode ALL -precalcValBufSize 2048  -precalcIdxBufSize 2048
+Create samples yapmak:
+	opencv_createsamples -num 120 -vec object.vec -info samplesdescription.dat -bg negatives.txt
+Description dosyasi olusturmak (zaten kesilme islemi tamamlanmis pozitif ornekler icin):
+	find ./ALL-Test-PositiveSet -name '*.png' -exec identify -format '%i 1 0 0 %w %h' \{\} \; > samplesdescription.dat

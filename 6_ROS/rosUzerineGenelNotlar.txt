@@ -1,0 +1,74 @@
+Ethernet ile Robot'a baglanirken kendi bilgisayarimda su komutlari calistirmam gerekiyor:
+	source /opt/ros/indigo/setup.sh
+	source ~/workspace-ONLY/ros/catkin_workspace/devel/setup.sh
+	source ~/workspace-ONLY/final_test_catkin_workspace/devel/setup.sh
+	export ROSLAUNCH_SSH_UNKNOWN=1
+	export ROS_IP=192.168.137.1
+	export ROS_MASTER_URI=http://192.168.137.1:11311
+
+	Komut aciklamalari:
+		Ilk komut ROS programlarini kullanabilmemiz icin gerekli komut.
+		ikinci komut catkin workspace'imde bulunan benim yazip derledigim ya da internetten kaynak kodunu bulup
+			derlemis oldugum programlarin ROS tarafindan taninmasini sagliyor.
+		Ucuncu komutta baska bir workspace icin ayni seyi yapiyor.
+		Dorduncu komut SSH anahtari bilinmeyen baska bir bilgisayarda ROS programinin baslatilmasini sagliyor.
+			Eger bu komutu calistirmazsaniz, raspberry pi'da guvenlik nedeniyle ROS program baslatmayi
+			reddedecektir.
+		Besinci komut ise bu bilgisayarin IP sinin 192.168.137.1 oldugunu belirtiyor.
+		Altinci komut ROSCORE'un hangi ip'ye sahip bilgisayarda baslatilacagini belirliyor.
+
+UBUNTU'da ethernet ile direk basak bir bilgisayara bagli iken kendi IP'mizi belirlememizin yolu su sekilde:
+	Ethernet Baglantisi (Wi-Fi bagli ise baglantiyi kes)
+	Edit connections
+	Wired connection 1 > edit
+	ipv4 address 
+		Manual
+		Add: 192.168.137.1, 255.255.255.0, 192.168.137.1
+		Save
+	Baglan
+
+-----TAM OLARAK HATIRLAYAMADIGIM FAKAT ONEMLI OLABILECEK DIGER NOTLAR------
+	--1--
+		Takip Et:
+			01_ubuntu_software_n_updates
+			02_ubuntu_software_n_updates
+			03_ROS_YUKLEMEK
+			04_ROS_BASLANGIC
+		mkdir ~/workspace-ONLY
+		mkdir ~/workspace-ONLY/ros
+		mkdir ~/workspace-ONLY/ros/catkin_workspace
+		mkdir ~/workspace-ONLY/ros/catkin_workspace/src
+		cd ~/workspace-ONLY/ros/catkin_workspace/src
+		ls
+			CMakeLists.txt       hector_slam  rplidar_ros
+			haritalayici_teleop  third_gpio_control
+		cd ..
+		sudo apt-get install ros-indigo-keyboard
+		rosdep update
+		rosdep install --from-paths src --ignore-src --rosdistro indigo -y
+		catkin_make
+		!!!:Basarili bir sekilde paketler derlendi.
+	--2--
+		mv ~/navigation ~/workspace-ONLY/ros/catkin_workspace/src
+
+		chmod +x ~/workspace-ONLY/ros/catkin_workspace/src/navigation/amcl/cfg/*
+
+		chmod +x ~/workspace-ONLY/ros/catkin_workspace/src/navigation/costmap_2d/cfg/*
+
+		chmod +x ~/workspace-ONLY/ros/catkin_workspace/src/navigation/base_local_planner/cfg/*
+
+		chmod +x ~/workspace-ONLY/ros/catkin_workspace/src/navigation/dwa_local_planner/cfg/*
+
+		chmod +x ~/workspace-ONLY/ros/catkin_workspace/src/navigation/costmap_2d/cfg/*
+
+		chmod +x ~/workspace-ONLY/ros/catkin_workspace/src/navigation/global_planner/cfg/*
+
+		chmod +x ~/workspace-ONLY/ros/catkin_workspace/src/navigation/move_base/cfg/*
+		!!!:Basarili bir sekilde paket derlendi.
+			Not: Catkin, derleme islemi bittiğinde [20%] olarak gosteriyor fakat
+				paketin tamami derlendi. Bu, muhtemelen daha once derlenmis 4
+				paketin arasinda oldugu için tum paketlerin 5 te 1'i derlendi
+				anlamina geliyor.
+
+		rviz'i kaydettikten sonra fixed frame hatasi vermeye başladı, muhtemeden .rviz dosyasini repodan çekip yenilemem lazim
+--------------------------------------------------------------
