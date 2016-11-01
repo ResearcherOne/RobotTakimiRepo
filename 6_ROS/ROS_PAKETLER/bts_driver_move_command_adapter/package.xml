@@ -1,0 +1,16 @@
+<package>
+  <name>bts_driver_move_command_adapter</name>
+  <version>0.0.0</version>
+  <description>The bts_driver_move_command_adapter package</description>
+
+  <maintainer email="birkan.kolcu@ozu.edu.tr">birkan kolcu</maintainer>
+
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>std_msgs</run_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,36 @@
+<launch>
+        <arg name="spawn_keyboard" default="true"/>
+        <arg name="use_default_machines" default="true"/>
+	<arg name="spawn_rosserial" default="true"/>
+	<arg name="port" default="/dev/ttyACM0"/>
+
+        <arg name="keyboard_keydown" default="keyboard/keydown"/>
+        <arg name="keyboard_keyup" default="keyboard/keyup"/>
+        <arg name="move_control" default="move"/>
+
+        <arg name="remote_machine" default="pi"/>
+        <arg name="local_machine" default="laptop"/>
+
+        <machine name="pi" address="192.168.137.48" user="root" password="ubuntu" env-loader="/home/ubuntu/load-env-remote-pi.sh"/>
+        <machine name="laptop" address="localhost" env-loader="/opt/ros/indigo/env.sh" if="$(arg use_default_machines)"/>
+
+
+        <node name="keyboard" pkg="keyboard" type="keyboard" if="$(arg spawn_keyboard)" machine="$(arg local_machine)"/>
+        <node name="haritalayici_teleop_node" pkg="haritalayici_teleop" type="haritalayici_teleop_node" output="screen" machine="$(arg local_machine)">
+                <remap from="keydown" to="$(arg keyboard_keydown)"/>
+                <remap from="keyup" to="$(arg keyboard_keyup)"/>
+                <remap from="move" to="$(arg move_control)"/>
+        </node>
+
+	<node pkg="rosserial_server" type="serial_node" name="rosserial_server" machine="$(arg remote_machine)">
+                <param name="port" value="$(arg port)" />
+        </node>
+        <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" machine="$(arg remote_machine)"/>
+	<node name="bts_driver_move_command_adapter_node" pkg="bts_driver_move_command_adapter" type="bts_driver_move_command_adapter_node" machine="$(arg local_machine)">
+		<param name="move_forward_state_no" value="3"/>
+		<param name="move_backward_state_no" value="2"/>
+		<param name="move_rightward_state_no" value="1"/>
+		<param name="move_leftward_state_no" value="0"/>
+		<param name="stop_state_no" value="4"/>
+	</node>
+</launch>
