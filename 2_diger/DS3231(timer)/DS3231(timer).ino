@@ -102,9 +102,7 @@ void displayTime(){
 void setup(){
   Wire.begin();
   Serial.begin(9600);
-  /* alttaki set metodunu kullanmaya çalışma, manuel olarak belli bir 
-   *saate kurmaya yarıyor, onun yerine örneklerdeki Time>TimeRTCSet
-   *kullanarak zamanı sistemden alacağız*/
+  /* alttaki set metodu ile bir keze mahsus olmak üzere RTC'nin saatini kurabilirsin, sonra burayı silmeyi unutma*/
   // set the initial time here:
   // DS3231 seconds, minutes, hours, day, date, month, year
   // setDS3231time(30,40,16,7,05,11,16);
