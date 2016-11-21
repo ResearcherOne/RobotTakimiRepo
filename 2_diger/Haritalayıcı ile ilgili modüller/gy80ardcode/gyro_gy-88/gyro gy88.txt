@@ -1,10 +1,11 @@
-Kod a�a��daki ilk iki linkte de ayn�, 3. linkte ise nas�l ba�lanaca�� mevcut.
+Kod aþaðýdaki ilk iki linkte de ayný, 3. linkte ise nasýl baðlanacaðý mevcut.
 
-VIN-3V3 (ama gy-88'de san�r�m voltaj reg�lat�r� var, 5V da olur)
+VIN-3V3 (ama gy-88'de sanýrým voltaj regülatörü var, 5V da olur)
 GND-GND
 SCL-A5
 SDA-A4
 
+Önemli not: GY-88'de AD0 pinini default olarak low yapıyor, bu sebeple MPU'nun I2C adresini direk olarak 0x68 olarak alıyor -kodda da MPU adresini 0x68 olarak yazdık-, burada AD0 pinini 3.3V'a bağladığında high olmasını sağlayarak adresini 0x69 olarak değiştirebilirsin, tabi kodda da adresi düzeltmeyi ihmal etme.
 
 1-http://playground.arduino.cc/Main/MPU-6050
 
@@ -14,7 +15,7 @@ SDA-A4
 
 
 
-Ayr�ca:
+Ayrýca:
 The output scale for any setting is [-32768, +32767] for each of the six axes. The default setting in the I2Cdevlib class is +/- 2g for the accel and +/- 250 deg/sec for the gyro. If the device is perfectly level and not moving, then:
 X/Y accel axes should read 0
 Z accel axis should read 1g, which is +16384 at a sensitivity of 2g
