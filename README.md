@@ -68,3 +68,11 @@
 		MQTT API: 
 #Contact
 	birkan.kolcu@ozu.edu.tr
+#For Helping Me at The Different Stages of The Project, Special Thanks Goes to:
+		Gürol Sağlam
+		Sami Menteş
+		Burak Kara
+		Emir Ünlütürk
+		Oğulcan Cingiler
+		Mehmet Mert Özgün
+		
