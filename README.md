@@ -66,3 +66,5 @@
 	#Dependenencies:
 		Wifi API:	https://github.com/tlhunter/node-wireless
 		MQTT API: 
+#Contact
+	birkan.kolcu@ozu.edu.tr
