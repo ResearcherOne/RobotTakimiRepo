@@ -1,5 +1,5 @@
 #Description
-Aim is to build a modular robotic platform that will enable you to develop robotic systems that is mostly focused onlocalization and 2D LIDAR mapping.
+- Aim is to build a modular robotic platform that will enable you to develop robotic systems that is mostly focused onlocalization and 2D LIDAR mapping.
 
 #Mapping a Dorm Room With The Prototype
 [![Mapping a dorm room.](http://i.imgur.com/aGk2MWS.png)](http://www.youtube.com/watch?v=oFOAtAxZN7c&t=0m44s "Mapping a dorm room.")
