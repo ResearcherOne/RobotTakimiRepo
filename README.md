@@ -18,13 +18,13 @@ RP-LIDAR 360 and Camera mounted Raspberry Pi will be the heart of this system. R
   - Arduino
   - Esp8266
 - batteryModule
- - accumulator (akü)
- - Esp8266
+  - accumulator (akü)
 - brainModule
   - Raspberry Pi (MQTT server, WiFi AccessPoint)
-		
+  - Webcam (for recognition of wall outlets)
 # Contact
 - birkan.kolcu@ozu.edu.tr
+
 # For Helping Me at The Different Stages of The Project, Special Thanks Goes to:
 - Gürol Sağlam
 - Sami Menteş
