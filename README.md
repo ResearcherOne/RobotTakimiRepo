@@ -3,6 +3,7 @@
 
 # Mapping a Dorm Room With The Prototype
 [![Mapping a dorm room.](http://i.imgur.com/aGk2MWS.png)](http://www.youtube.com/watch?v=oFOAtAxZN7c&t=0m44s "Mapping a dorm room.")
+[![Mapping a dorm room.](https://raw.githubusercontent.com/ResearcherOne/RobotTakimiRepo/master/images/robot.png)](https://www.youtube.com/watch?v=Zqhcy5wxcf4 "Plugging to Outlet.")
 
 # Video Log of Development of The Robot (Highly Recommended to Watch!)
 https://www.youtube.com/watch?v=pvZsUYuiq-Y&list=PLIdKqNOzltlwOTcxoQ6y2CK0AK1hCf2Rg&index=1
